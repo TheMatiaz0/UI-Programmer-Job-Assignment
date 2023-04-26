@@ -31,7 +31,7 @@ RectTransform:
   m_Children:
   - {fileID: 571416309428254183}
   - {fileID: 3970643517710781308}
-  - {fileID: 5892844004066674509}
+  - {fileID: 7746279642910844899}
   - {fileID: 4021436653028095120}
   m_Father: {fileID: 0}
   m_RootOrder: -1
@@ -78,6 +78,10 @@ PrefabInstance:
     - target: {fileID: 2265629313064788311, guid: 05f005d99b3809f498dcd960ba653015, type: 3}
       propertyPath: m_text
       value: Settings
+      objectReference: {fileID: 0}
+    - target: {fileID: 3353350849374841646, guid: 05f005d99b3809f498dcd960ba653015, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.031402588
       objectReference: {fileID: 0}
     - target: {fileID: 3470072822859859301, guid: 05f005d99b3809f498dcd960ba653015, type: 3}
       propertyPath: m_Name
@@ -189,6 +193,10 @@ PrefabInstance:
       propertyPath: m_text
       value: Quit
       objectReference: {fileID: 0}
+    - target: {fileID: 3353350849374841646, guid: 05f005d99b3809f498dcd960ba653015, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.031402588
+      objectReference: {fileID: 0}
     - target: {fileID: 3470072822859859301, guid: 05f005d99b3809f498dcd960ba653015, type: 3}
       propertyPath: m_Name
       value: SimpleButton (3)
@@ -298,6 +306,10 @@ PrefabInstance:
     - target: {fileID: 2265629313064788311, guid: 05f005d99b3809f498dcd960ba653015, type: 3}
       propertyPath: m_text
       value: New_Game
+      objectReference: {fileID: 0}
+    - target: {fileID: 3353350849374841646, guid: 05f005d99b3809f498dcd960ba653015, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.031402588
       objectReference: {fileID: 0}
     - target: {fileID: 3470072822859859301, guid: 05f005d99b3809f498dcd960ba653015, type: 3}
       propertyPath: m_Name
@@ -409,6 +421,10 @@ PrefabInstance:
       propertyPath: m_text
       value: Info
       objectReference: {fileID: 0}
+    - target: {fileID: 3353350849374841646, guid: 05f005d99b3809f498dcd960ba653015, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.031402588
+      objectReference: {fileID: 0}
     - target: {fileID: 3470072822859859301, guid: 05f005d99b3809f498dcd960ba653015, type: 3}
       propertyPath: m_Name
       value: SimpleButton (2)
@@ -502,7 +518,7 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 05f005d99b3809f498dcd960ba653015, type: 3}
---- !u!224 &5892844004066674509 stripped
+--- !u!224 &7746279642910844899 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4199543075290554543, guid: 05f005d99b3809f498dcd960ba653015, type: 3}
   m_PrefabInstance: {fileID: 5892844004066674508}

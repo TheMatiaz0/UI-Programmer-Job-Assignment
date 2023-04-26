@@ -96,7 +96,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7641926915853212635, guid: 33e12bca1b8fd004c97b0ef2f13f6538, type: 3}
       propertyPath: m_Name
-      value: SaveButton (2)
+      value: SaveButton_Slot_3
       objectReference: {fileID: 0}
     - target: {fileID: 7930811538274377196, guid: 33e12bca1b8fd004c97b0ef2f13f6538, type: 3}
       propertyPath: m_Pivot.x
@@ -238,7 +238,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7641926915853212635, guid: 33e12bca1b8fd004c97b0ef2f13f6538, type: 3}
       propertyPath: m_Name
-      value: SaveButton (1)
+      value: SaveButton_Slot_2
       objectReference: {fileID: 0}
     - target: {fileID: 7930811538274377196, guid: 33e12bca1b8fd004c97b0ef2f13f6538, type: 3}
       propertyPath: m_Pivot.x
@@ -380,7 +380,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7641926915853212635, guid: 33e12bca1b8fd004c97b0ef2f13f6538, type: 3}
       propertyPath: m_Name
-      value: SaveButton
+      value: SaveButton_Slot_1
       objectReference: {fileID: 0}
     - target: {fileID: 7930811538274377196, guid: 33e12bca1b8fd004c97b0ef2f13f6538, type: 3}
       propertyPath: m_Pivot.x
@@ -473,6 +473,10 @@ PrefabInstance:
     - target: {fileID: 8194149106299930242, guid: 33e12bca1b8fd004c97b0ef2f13f6538, type: 3}
       propertyPath: m_AnchorMin.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8194149106299930242, guid: 33e12bca1b8fd004c97b0ef2f13f6538, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 43.7858
       objectReference: {fileID: 0}
     - target: {fileID: 8194149106299930242, guid: 33e12bca1b8fd004c97b0ef2f13f6538, type: 3}
       propertyPath: m_AnchoredPosition.x

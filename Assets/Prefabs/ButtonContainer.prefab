@@ -85,7 +85,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3470072822859859301, guid: 05f005d99b3809f498dcd960ba653015, type: 3}
       propertyPath: m_Name
-      value: SimpleButton (1)
+      value: Settings
       objectReference: {fileID: 0}
     - target: {fileID: 4199543075290554543, guid: 05f005d99b3809f498dcd960ba653015, type: 3}
       propertyPath: m_Pivot.x
@@ -199,7 +199,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3470072822859859301, guid: 05f005d99b3809f498dcd960ba653015, type: 3}
       propertyPath: m_Name
-      value: SimpleButton (3)
+      value: Quit
       objectReference: {fileID: 0}
     - target: {fileID: 4199543075290554543, guid: 05f005d99b3809f498dcd960ba653015, type: 3}
       propertyPath: m_Pivot.x
@@ -313,7 +313,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3470072822859859301, guid: 05f005d99b3809f498dcd960ba653015, type: 3}
       propertyPath: m_Name
-      value: SimpleButton
+      value: NewGame
       objectReference: {fileID: 0}
     - target: {fileID: 4199543075290554543, guid: 05f005d99b3809f498dcd960ba653015, type: 3}
       propertyPath: m_Pivot.x
@@ -427,7 +427,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3470072822859859301, guid: 05f005d99b3809f498dcd960ba653015, type: 3}
       propertyPath: m_Name
-      value: SimpleButton (2)
+      value: Info
       objectReference: {fileID: 0}
     - target: {fileID: 4199543075290554543, guid: 05f005d99b3809f498dcd960ba653015, type: 3}
       propertyPath: m_Pivot.x

@@ -531,7 +531,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3470072822859859301, guid: 05f005d99b3809f498dcd960ba653015, type: 3}
       propertyPath: m_Name
-      value: SimpleButton
+      value: LoadButton
       objectReference: {fileID: 0}
     - target: {fileID: 4199543075290554543, guid: 05f005d99b3809f498dcd960ba653015, type: 3}
       propertyPath: m_Pivot.x

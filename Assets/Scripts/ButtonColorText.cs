@@ -1,17 +1,10 @@
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 
 public class ButtonColorText : Button
 {
-    private TMP_Text text;
-
-    protected override void Awake()
-    {
-        base.Awake();
-        // TODO: Rewrite it with custom editor to SerializeField
-        text = GetComponentInChildren<TMP_Text>();
-    }
+    [SerializeField]
+    private Graphic[] colorTintGraphicElements;
 
     protected override void DoStateTransition(SelectionState state, bool instant)
     {
@@ -24,20 +17,18 @@ public class ButtonColorText : Button
             SelectionState.Selected => this.colors.selectedColor,
             _ => Color.black,
         };
-        if (base.gameObject.activeInHierarchy)
+        if (base.gameObject.activeInHierarchy && this.transition == Selectable.Transition.ColorTint)
         {
-            switch (this.transition)
-            {
-                case Selectable.Transition.ColorTint:
-                    ColorTween(color * this.colors.colorMultiplier, instant);
-                    break;
-            }
+            ColorTween(color * this.colors.colorMultiplier, instant);
         }
     }
 
     private void ColorTween(Color targetColor, bool instant)
     {
         base.image.CrossFadeColor(targetColor, (!instant) ? this.colors.fadeDuration : 0f, true, true);
-        text.CrossFadeColor(targetColor.IsColorDark() ? Color.white : Color.black, (!instant) ? this.colors.fadeDuration : 0f, true, true);
+        foreach (var graphic in colorTintGraphicElements)
+        {
+            graphic.CrossFadeColor(targetColor.IsColorDark() ? Color.white : Color.black, (!instant) ? this.colors.fadeDuration : 0f, true, true);
+        }
     }
 }

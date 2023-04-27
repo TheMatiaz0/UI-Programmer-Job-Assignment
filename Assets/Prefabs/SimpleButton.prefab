@@ -324,6 +324,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+  colorTintGraphicElements:
+  - {fileID: 2265629313064788311}
 --- !u!1 &3563852460128843411
 GameObject:
   m_ObjectHideFlags: 0

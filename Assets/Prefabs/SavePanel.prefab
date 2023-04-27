@@ -380,6 +380,7 @@ MonoBehaviour:
   colorTintGraphicElements:
   - {fileID: 1235767788254930834}
   - {fileID: 2300928833234975868}
+  graphicElementsFadeDuration: 0.1
 --- !u!1 &7641926915853212635
 GameObject:
   m_ObjectHideFlags: 0
@@ -390,7 +391,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7930811538274377196}
   m_Layer: 5
-  m_Name: SaveButton
+  m_Name: SavePanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -3,6 +3,8 @@ using UnityEngine.UI;
 
 public class ButtonColorText : Button
 {
+    private const float GraphicElementsFadeDuration = 0.1f;
+
     [SerializeField]
     private Graphic[] colorTintGraphicElements;
 
@@ -28,7 +30,7 @@ public class ButtonColorText : Button
         base.image.CrossFadeColor(targetColor, (!instant) ? this.colors.fadeDuration : 0f, true, true);
         foreach (var graphic in colorTintGraphicElements)
         {
-            graphic.CrossFadeColor(targetColor.IsColorDark() ? Color.white : Color.black, (!instant) ? this.colors.fadeDuration : 0f, true, true);
+            graphic.CrossFadeColor(targetColor.IsColorDark() ? Color.white : Color.black, (!instant) ? GraphicElementsFadeDuration : 0f, true, true);
         }
     }
 }

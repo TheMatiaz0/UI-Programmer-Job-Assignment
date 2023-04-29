@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2500211474452067242}
   - component: {fileID: 7174672575712753805}
+  - component: {fileID: 3540919746013985876}
   m_Layer: 5
   m_Name: Grid
   m_TagString: Untagged
@@ -50,17 +51,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b961a015f20bb9549a12389d1436ba96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cellPrefab: {fileID: 6997139491372830962, guid: fca33f281902e8b4ea0ff7a44171ac49, type: 3}
+  cellPrefab: {fileID: 2989022106694624124, guid: fca33f281902e8b4ea0ff7a44171ac49, type: 3}
   grid: {fileID: 2500211474452067242}
-  gridCols: 11
-  gridRows: 11
   cellSize: 33.5
   offset: {x: 0.0645, y: 0.0645}
   corner: 0
   padding: {x: 1.5, y: 1.5}
+  <Columns>k__BackingField: 11
+  <Rows>k__BackingField: 11
+--- !u!114 &3540919746013985876
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2126411064526073485}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9dcfe57406f4ce941af7741d2f5771a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  grid: {fileID: 7174672575712753805}
   possibleColors:
   - {r: 1, g: 0.99607843, b: 0.003921569, a: 1}
   - {r: 1, g: 1, b: 1, a: 1}
+  minMaxRefreshTime: {x: 0.7, y: 1.3}
   isDebugging: 0
 --- !u!1 &7265804685407767527
 GameObject:

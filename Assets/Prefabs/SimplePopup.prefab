@@ -591,7 +591,7 @@ GameObject:
   - component: {fileID: 3804104769655484985}
   - component: {fileID: 5160007617390337085}
   m_Layer: 5
-  m_Name: ExitButton
+  m_Name: CloseButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1230,7 +1230,7 @@ GameObject:
   - component: {fileID: 765912938234047361}
   - component: {fileID: 5338484244916025210}
   m_Layer: 5
-  m_Name: ExitIcon
+  m_Name: CloseIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1379,6 +1379,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2893137695580853795}
+  - component: {fileID: 4314990120223295122}
+  - component: {fileID: 3519484787411177039}
   m_Layer: 5
   m_Name: SimplePopup
   m_TagString: Untagged
@@ -1408,6 +1410,33 @@ RectTransform:
   m_AnchoredPosition: {x: 41.3127, y: -137.82336}
   m_SizeDelta: {x: -1516.7596, y: -713.4817}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!225 &4314990120223295122
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7120792073206051328}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!114 &3519484787411177039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7120792073206051328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c44b4f188bc1ec45b10f7c405365bc2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 0
+  canvasGroup: {fileID: 4314990120223295122}
+  closeButton: {fileID: 5160007617390337085}
 --- !u!1 &7328136953217613655
 GameObject:
   m_ObjectHideFlags: 0
@@ -1804,6 +1833,10 @@ PrefabInstance:
     - target: {fileID: 3020259684651631430, guid: e989a112b2f8dab48bcc91990cfeabef, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3379715816098729998, guid: e989a112b2f8dab48bcc91990cfeabef, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 5.085022
       objectReference: {fileID: 0}
     - target: {fileID: 3614632879070384717, guid: e989a112b2f8dab48bcc91990cfeabef, type: 3}
       propertyPath: m_AnchorMax.y

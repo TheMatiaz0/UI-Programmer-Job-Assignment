@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -12,6 +10,8 @@ public class MenuButtonsController : MonoBehaviour
     private GameObject settingsWindow;
     [SerializeField]
     private GameObject saveSlot;
+    [SerializeField]
+    private PopupManager popupManager;
 
     private void Awake()
     {
@@ -25,6 +25,5 @@ public class MenuButtonsController : MonoBehaviour
         EventSystem.current.SetSelectedGameObject(saveSlot);
     }
 
-    public void OpenSettings() => settingsWindow.SetActive(true);
-    public void CloseSettings() => settingsWindow.SetActive(false);
+    public void OpenSettings() => popupManager.OpenPopup(PopupType.Settings);
 }

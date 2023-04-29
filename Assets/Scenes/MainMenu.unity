@@ -1441,10 +1441,10 @@ MonoBehaviour:
   - {fileID: 1387478962}
   openAnimation:
     ease: 16
-    duration: 0.34
+    duration: 0.4
   closeAnimation:
     ease: 15
-    duration: 0.34
+    duration: 0.4
 --- !u!82 &1713784444
 AudioSource:
   m_ObjectHideFlags: 0

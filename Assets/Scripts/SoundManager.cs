@@ -1,7 +1,5 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public enum SoundType
@@ -12,24 +10,24 @@ public enum SoundType
     ButtonPick
 }
 
-[Serializable]
-public class SoundData
-{
-    [SerializeField]
-    private SoundType type;
-    [SerializeField]
-    private AudioClip audioClip;
-    [SerializeField]
-    [Range(0f, 1f)]
-    private float volume;
-
-    public SoundType Type => type;
-    public AudioClip AudioClip => audioClip;
-    public float Volume => volume;
-}
-
 public class SoundManager : MonoBehaviour
 {
+    [Serializable]
+    private class SoundData
+    {
+        [SerializeField]
+        private SoundType type;
+        [SerializeField]
+        private AudioClip audioClip;
+        [SerializeField]
+        [Range(0f, 1f)]
+        private float volume;
+
+        public SoundType Type => type;
+        public AudioClip AudioClip => audioClip;
+        public float Volume => volume;
+    }
+
     [SerializeField]
     private List<SoundData> soundData;
     [SerializeField]

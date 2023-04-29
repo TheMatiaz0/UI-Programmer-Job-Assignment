@@ -421,6 +421,18 @@ PrefabInstance:
       propertyPath: m_Interactable
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1576232813095300564, guid: 05f005d99b3809f498dcd960ba653015, type: 3}
+      propertyPath: m_Colors.m_DisabledColor.b
+      value: 0.07636168
+      objectReference: {fileID: 0}
+    - target: {fileID: 1576232813095300564, guid: 05f005d99b3809f498dcd960ba653015, type: 3}
+      propertyPath: m_Colors.m_DisabledColor.g
+      value: 0.07636168
+      objectReference: {fileID: 0}
+    - target: {fileID: 1576232813095300564, guid: 05f005d99b3809f498dcd960ba653015, type: 3}
+      propertyPath: m_Colors.m_DisabledColor.r
+      value: 0.11320752
+      objectReference: {fileID: 0}
     - target: {fileID: 2265629313064788311, guid: 05f005d99b3809f498dcd960ba653015, type: 3}
       propertyPath: m_text
       value: Info

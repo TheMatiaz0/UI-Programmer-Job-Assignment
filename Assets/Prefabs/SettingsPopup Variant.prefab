@@ -312,10 +312,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4262562623686473971, guid: a046728cf5dd90648a288ffbaf0de975, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 1.3532715
-      objectReference: {fileID: 0}
     - target: {fileID: 4355042388589564458, guid: a046728cf5dd90648a288ffbaf0de975, type: 3}
       propertyPath: m_text
       value: Gameplay

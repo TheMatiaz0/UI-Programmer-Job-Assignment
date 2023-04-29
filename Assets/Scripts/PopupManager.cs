@@ -5,6 +5,13 @@ using UnityEngine;
 public enum PopupType
 {
     Settings,
+    Controls,
+    Graphics,
+    Audio,
+    Language,
+    Gameplay,
+    Accessibility,
+    Credits
 }
 
 public class PopupManager : MonoBehaviour
@@ -42,10 +49,11 @@ public class PopupManager : MonoBehaviour
     }
 
     public void OpenPopup(CanvasGroup canvasGroup)
-    {
+    { 
         canvasGroup.gameObject.SetActive(true);
         currentTween.Kill();
-        currentTween = canvasGroup.transform.DOScale(Vector3.one, openAnimation.Duration).SetEase(openAnimation.Ease);
+        currentTween = canvasGroup.transform.DOScale(Vector3.one, openAnimation.Duration)
+            .SetEase(openAnimation.Ease);
     }
 
     public void ClosePopup(PopupType type)

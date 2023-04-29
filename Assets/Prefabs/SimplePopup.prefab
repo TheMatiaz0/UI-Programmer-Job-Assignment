@@ -39,7 +39,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 391.24, y: 36.883}
+  m_SizeDelta: {x: 390.47, y: 36.883}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &6278207437099524913
 CanvasRenderer:
@@ -590,6 +590,7 @@ GameObject:
   - component: {fileID: 3126869715124242364}
   - component: {fileID: 3804104769655484985}
   - component: {fileID: 5160007617390337085}
+  - component: {fileID: 904354016154863267}
   m_Layer: 5
   m_Name: CloseButton
   m_TagString: Untagged
@@ -713,6 +714,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &904354016154863267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4786836654794015379}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e86cd7c5457a594ead6ded294e2b986, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  button: {fileID: 5160007617390337085}
+  soundType: 3
 --- !u!1 &5248953059476215758
 GameObject:
   m_ObjectHideFlags: 0
@@ -1042,8 +1057,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 1.3532104, y: 0}
-  m_SizeDelta: {x: -2.8264, y: 1.2168}
+  m_AnchoredPosition: {x: 0.36834717, y: 0}
+  m_SizeDelta: {x: -0.73688, y: 1.2168}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7679362609592345388
 CanvasRenderer:

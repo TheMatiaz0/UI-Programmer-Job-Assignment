@@ -17,8 +17,9 @@ public class ImageCell : Cell
 {
     public Image Image;
 
-    public ImageCell(GameObject obj) : base(obj)
+    public ImageCell(GameObject obj, Image image) : base(obj)
     {
+        this.Image = image;
     }
 }
 
@@ -50,6 +51,8 @@ public class GridPlacement : MonoBehaviour
     private Corner corner = Corner.BottomLeft;
     [SerializeField]
     private Vector2 padding;
+    [SerializeField]
+    private Color[] possibleColors;
 
     private ImageCell[,] gridArray;
     private Vector2 chosenCorner;
@@ -66,9 +69,40 @@ public class GridPlacement : MonoBehaviour
 
     private void Start()
     {
-        // InitializeCells();
-        StartCoroutine(RandomSpawn());
+        InitializeCells();
+        // StartCoroutine(UpdateCells());
+        // StartCoroutine(RandomSpawn());
     }
+
+    private void Update()
+    {
+        for (int x = 0; x < gridCols; x++)
+        {
+            for (int y = 0; y < gridRows; y++)
+            {
+                Destroy(gridArray[x, y]?.Object);
+            }
+        }
+        InitializeCells();
+    }
+
+    /*
+    private IEnumerator UpdateCells()
+    {
+        while (true)
+        {
+            for (int x = 0; x < gridCols; x++)
+            {
+                for (int y = 0; y < gridRows; y++)
+                {
+                    Destroy(gridArray[x, y]?.Object);
+                }
+            }
+            InitializeCells();
+            yield return new WaitForSeconds(2);
+        }
+    }
+    */
 
     public void SetCell(Vector2Int cellPosition)
     {
@@ -101,7 +135,8 @@ public class GridPlacement : MonoBehaviour
             for (int i = 0; i < rndCount; i++)
             {
                 Vector2Int rndPosition = new(Random.Range(0, gridCols), Random.Range(0, gridRows));
-                SpawnCell(rndPosition);
+                var imageCell = SpawnCell(rndPosition) as ImageCell;
+                imageCell.Image.color = possibleColors[Random.Range(0, possibleColors.Length)];
                 previousCells.Add(rndPosition);
             }
             yield return new WaitForSeconds(2);
@@ -119,12 +154,13 @@ public class GridPlacement : MonoBehaviour
         }
     }
 
-    private void SpawnCell(Vector2Int cellPosition)
+    private Cell SpawnCell(Vector2Int cellPosition)
     {
         var newGameObject = Instantiate(cellPrefab, GetWorldPosition(cellPosition) + center, Quaternion.identity, this.transform);
-        ImageCell cell = new(newGameObject);
+        ImageCell cell = new(newGameObject, newGameObject.GetComponent<Image>());
         gridArray[cellPosition.x, cellPosition.y] = cell;
         newGameObject.name = $"Cell {cellPosition.x} {cellPosition.y}";
+        return cell;
     }
 
     private Vector2 GetWorldPosition(Vector2Int cellPosition)

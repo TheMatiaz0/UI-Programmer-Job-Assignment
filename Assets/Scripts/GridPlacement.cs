@@ -53,6 +53,8 @@ public class GridPlacement : MonoBehaviour
     private Vector2 padding;
     [SerializeField]
     private Color[] possibleColors;
+    [SerializeField]
+    private bool isDebugging = false;
 
     private ImageCell[,] gridArray;
     private Vector2 chosenCorner;
@@ -69,27 +71,13 @@ public class GridPlacement : MonoBehaviour
 
     private void Start()
     {
-        InitializeCells();
-        // StartCoroutine(UpdateCells());
-        // StartCoroutine(RandomSpawn());
+        // InitializeCells();
+        StartCoroutine(RandomSpawn());
     }
 
     private void Update()
     {
-        for (int x = 0; x < gridCols; x++)
-        {
-            for (int y = 0; y < gridRows; y++)
-            {
-                Destroy(gridArray[x, y]?.Object);
-            }
-        }
-        InitializeCells();
-    }
-
-    /*
-    private IEnumerator UpdateCells()
-    {
-        while (true)
+        if (isDebugging)
         {
             for (int x = 0; x < gridCols; x++)
             {
@@ -99,10 +87,8 @@ public class GridPlacement : MonoBehaviour
                 }
             }
             InitializeCells();
-            yield return new WaitForSeconds(2);
         }
     }
-    */
 
     public void SetCell(Vector2Int cellPosition)
     {

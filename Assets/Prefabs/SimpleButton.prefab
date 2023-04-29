@@ -340,7 +340,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   button: {fileID: 1576232813095300564}
-  soundType: 0
+  soundType: 1
 --- !u!1 &3563852460128843411
 GameObject:
   m_ObjectHideFlags: 0

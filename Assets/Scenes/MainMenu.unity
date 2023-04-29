@@ -2084,12 +2084,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundData:
-  - type: 0
+  - type: 1
     audioClip: {fileID: 8300000, guid: 162f21c0c58798d41832115f3d0de26a, type: 3}
     volume: 0.5
-  - type: 3
+  - type: 2
     audioClip: {fileID: 8300000, guid: 4d832c660ae3fdb4ea2c7d95f38cc43c, type: 3}
     volume: 0.2
+  - type: 3
+    audioClip: {fileID: 8300000, guid: 6432dc7e174b58e4cbf302b88e53b307, type: 3}
+    volume: 0.5
   soundSource: {fileID: 2096673006}
 --- !u!1001 &4709804040272480692
 PrefabInstance:

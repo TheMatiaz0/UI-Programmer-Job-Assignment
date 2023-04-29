@@ -6,10 +6,10 @@ using UnityEngine;
 
 public enum SoundType
 {
+    None,
     ButtonNormal,
-    Maximize,
-    Minimize,
-    ButtonAlternative,
+    ButtonClose,
+    ButtonPick
 }
 
 [Serializable]
@@ -56,6 +56,10 @@ public class SoundManager : MonoBehaviour
     public void Play(SoundType type)
     {
         var sound = soundData.Find(x => x.Type == type);
+        if (sound == null || sound.AudioClip == null)
+        {
+            return;
+        }
         playlist.Enqueue(sound);
     }
 

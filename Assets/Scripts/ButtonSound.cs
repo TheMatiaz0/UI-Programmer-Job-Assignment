@@ -25,6 +25,10 @@ public class ButtonSound : MonoBehaviour
         {
             button = GetComponent<Button>();
         }
+        if (soundType == SoundType.None)
+        {
+            Debug.Log($"SoundType is none for {this.gameObject.name}");
+        }
     }
 
 #endif

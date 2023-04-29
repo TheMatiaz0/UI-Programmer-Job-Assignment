@@ -304,6 +304,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2385353267173348813}
   - component: {fileID: 4164500163951929544}
+  - component: {fileID: 5111187788743217035}
   m_Layer: 5
   m_Name: SlotButton
   m_TagString: Untagged
@@ -380,6 +381,20 @@ MonoBehaviour:
   colorTintGraphicElements:
   - {fileID: 1235767788254930834}
   - {fileID: 2300928833234975868}
+--- !u!114 &5111187788743217035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3176348416116225727}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e86cd7c5457a594ead6ded294e2b986, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  button: {fileID: 4164500163951929544}
+  soundType: 3
 --- !u!1 &7641926915853212635
 GameObject:
   m_ObjectHideFlags: 0
@@ -669,6 +684,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 21526824898d5834ba58cb4412df75f6, type: 3}
+    - target: {fileID: 4945560763201532584, guid: 05f005d99b3809f498dcd960ba653015, type: 3}
+      propertyPath: soundType
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

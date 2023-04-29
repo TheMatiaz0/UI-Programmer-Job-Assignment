@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Cell
 {
@@ -9,6 +10,15 @@ public class Cell
     public Cell(GameObject obj)
     {
         this.Object = obj;
+    }
+}
+
+public class ImageCell : Cell
+{
+    public Image Image;
+
+    public ImageCell(GameObject obj) : base(obj)
+    {
     }
 }
 
@@ -41,55 +51,23 @@ public class GridPlacement : MonoBehaviour
     [SerializeField]
     private Vector2 padding;
 
-    private Cell[,] gridArray;
+    private ImageCell[,] gridArray;
     private Vector2 chosenCorner;
+    private Vector2 center;
 
     private void Awake()
     {
         var worldCorners = new Vector3[4];
         grid.GetWorldCorners(worldCorners);
         chosenCorner = (Vector2)worldCorners[(int)corner];
+        center = new Vector2(cellSize, cellSize) * .5f;
+        gridArray = new ImageCell[gridCols, gridRows];
     }
 
     private void Start()
     {
-        InitializeCells();
-    }
-
-    private void InitializeCells()
-    {
-        gridArray = new Cell[gridCols, gridRows];
-        for (int x = 0; x < gridCols; x++)
-        {
-            for (int y = 0; y < gridRows; y++)
-            {
-                SpawnCell(new(x, y));
-            }
-        }
-    }
-
-    private void SpawnCell(Vector2Int cellPosition)
-    {
-        var newGameObject = Instantiate(cellPrefab, GetWorldPositionCell(cellPosition), Quaternion.identity, this.transform);
-        var cell = new Cell(newGameObject);
-        gridArray[cellPosition.x, cellPosition.y] = cell;
-        newGameObject.name = $"Cell {cellPosition.x} {cellPosition.y}";
-    }
-
-    private Vector2 GetWorldPositionCell(Vector2Int cellPosition)
-    {
-        return GetWorldPosition(cellPosition) + new Vector2(cellSize, cellSize) * .5f;
-    }
-
-    private Vector2 GetWorldPosition(Vector2Int cellPosition)
-    {
-        return new Vector2(cellPosition.x + (offset.x * cellPosition.x), cellPosition.y + (offset.y * cellPosition.y)) * cellSize + chosenCorner + padding;
-    }
-
-    private void GetXY(Vector2 worldPosition, out int x, out int y)
-    {
-        x = Mathf.FloorToInt((worldPosition - chosenCorner).x / cellSize);
-        y = Mathf.FloorToInt((worldPosition - chosenCorner).y / cellSize);
+        // InitializeCells();
+        StartCoroutine(RandomSpawn());
     }
 
     public void SetCell(Vector2Int cellPosition)
@@ -106,6 +84,58 @@ public class GridPlacement : MonoBehaviour
                 SpawnCell(cellPosition);
             }
         }
+    }
+
+    private IEnumerator RandomSpawn()
+    {
+        List<Vector2Int> previousCells = new();
+        while (true)
+        {
+            foreach (var previousCell in previousCells)
+            {
+                var gridCell = gridArray[previousCell.x, previousCell.y];
+                Destroy(gridCell.Object);
+            }
+
+            var rndCount = Random.Range(2, 5);
+            for (int i = 0; i < rndCount; i++)
+            {
+                Vector2Int rndPosition = new(Random.Range(0, gridCols), Random.Range(0, gridRows));
+                SpawnCell(rndPosition);
+                previousCells.Add(rndPosition);
+            }
+            yield return new WaitForSeconds(2);
+        }
+    }
+
+    private void InitializeCells()
+    {
+        for (int x = 0; x < gridCols; x++)
+        {
+            for (int y = 0; y < gridRows; y++)
+            {
+                SpawnCell(new(x, y));
+            }
+        }
+    }
+
+    private void SpawnCell(Vector2Int cellPosition)
+    {
+        var newGameObject = Instantiate(cellPrefab, GetWorldPosition(cellPosition) + center, Quaternion.identity, this.transform);
+        ImageCell cell = new(newGameObject);
+        gridArray[cellPosition.x, cellPosition.y] = cell;
+        newGameObject.name = $"Cell {cellPosition.x} {cellPosition.y}";
+    }
+
+    private Vector2 GetWorldPosition(Vector2Int cellPosition)
+    {
+        return new Vector2(cellPosition.x + (offset.x * cellPosition.x), cellPosition.y + (offset.y * cellPosition.y)) * cellSize + chosenCorner + padding;
+    }
+
+    private void GetXY(Vector2 worldPosition, out int x, out int y)
+    {
+        x = Mathf.FloorToInt((worldPosition - chosenCorner - padding).x / cellSize);
+        y = Mathf.FloorToInt((worldPosition - chosenCorner - padding).y / cellSize);
     }
 
     private bool IsPossibleCell(Vector2Int cellPosition)

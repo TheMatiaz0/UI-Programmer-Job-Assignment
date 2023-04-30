@@ -1,4 +1,5 @@
 using DG.Tweening;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -44,7 +45,7 @@ public class PopupManager : MonoBehaviour
         }
     }
 
-    public void OpenPopup(PopupType type)
+    public void OpenPopup(PopupType type, Action<Popup> callback = null)
     {
         var popupToOpen = allPopups.Find(x => x.Type == type);
         if (openedPopups.Contains(popupToOpen.CanvasGroup))
@@ -52,6 +53,7 @@ public class PopupManager : MonoBehaviour
             return;
         }
         OpenPopup(popupToOpen.CanvasGroup);
+        callback?.Invoke(popupToOpen);
     }
 
     public void OpenPopup(CanvasGroup canvasGroup)
@@ -62,13 +64,10 @@ public class PopupManager : MonoBehaviour
             latestPopup.blocksRaycasts = false;
         }
         canvasGroup.gameObject.SetActive(true);
-        if (currentTweens.TryGetValue(canvasGroup, out var tween))
-        {
-            tween.Kill();
-            currentTweens.Remove(canvasGroup);
-        }
+        KillCurrentTween(canvasGroup);
         currentTweens.TryAdd(canvasGroup, canvasGroup.transform.DOScale(Vector3.one, openAnimation.Duration)
-            .SetEase(openAnimation.Ease).OnComplete(() => openedPopups.Add(canvasGroup)));
+            .SetEase(openAnimation.Ease)
+            .OnComplete(() => openedPopups.Add(canvasGroup)));
     }
 
     public void ClosePopup(PopupType type)
@@ -84,14 +83,19 @@ public class PopupManager : MonoBehaviour
         {
             openedPopups[previousIndex].blocksRaycasts = true;
         }
+        KillCurrentTween(canvasGroup);
+        currentTweens.TryAdd(canvasGroup, canvasGroup.transform.DOScale(Vector3.zero, closeAnimation.Duration)
+            .SetEase(closeAnimation.Ease)
+            .OnComplete(() => FinalizePopup(canvasGroup)));
+    }
+
+    private void KillCurrentTween(CanvasGroup canvasGroup)
+    {
         if (currentTweens.TryGetValue(canvasGroup, out var tween))
         {
             tween.Kill();
             currentTweens.Remove(canvasGroup);
         }
-        currentTweens.TryAdd(canvasGroup, canvasGroup.transform.DOScale(Vector3.zero, closeAnimation.Duration)
-            .SetEase(closeAnimation.Ease)
-            .OnComplete(() => FinalizePopup(canvasGroup)));
     }
 
     private void FinalizePopup(CanvasGroup canvasGroup)

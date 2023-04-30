@@ -560,13 +560,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttons:
-  - {fileID: 4593911964947033330}
-  - {fileID: 42124207860489182}
-  - {fileID: 781707389051877538}
-  - {fileID: 3485712408908643907}
-  - {fileID: 1440212047909229756}
-  - {fileID: 3703606720848193335}
-  - {fileID: 3347849524647303391}
+  - contentType: 1
+    button: {fileID: 4593911964947033330}
+  - contentType: 2
+    button: {fileID: 42124207860489182}
+  - contentType: 3
+    button: {fileID: 781707389051877538}
+  - contentType: 4
+    button: {fileID: 3485712408908643907}
+  - contentType: 5
+    button: {fileID: 1440212047909229756}
+  - contentType: 6
+    button: {fileID: 3703606720848193335}
+  - contentType: 7
+    button: {fileID: 3347849524647303391}
 --- !u!1001 &2790610903278275299
 PrefabInstance:
   m_ObjectHideFlags: 0

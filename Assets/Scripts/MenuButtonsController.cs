@@ -23,5 +23,8 @@ public class MenuButtonsController : MonoBehaviour
         EventSystem.current.SetSelectedGameObject(saveSlot);
     }
 
-    public void OpenSettings() => PopupManager.Instance.OpenPopup(PopupType.Settings);
+    public void OpenSettings() 
+    {
+        PopupManager.Instance.OpenPopup(PopupType.Settings);
+    }
 }

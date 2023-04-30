@@ -18,7 +18,7 @@ public class PopupManager : MonoBehaviour
     private TweenData closeAnimation;
 
     private List<CanvasGroup> openedPopups = new();
-    private Tween currentTween;
+    private readonly Dictionary<CanvasGroup, Tween> currentTweens = new();
 
     public static PopupManager Instance { get; private set; }
 
@@ -59,12 +59,16 @@ public class PopupManager : MonoBehaviour
         if (openedPopups.Count >= 1)
         {
             var latestPopup = openedPopups[^1];
-            latestPopup.interactable = false;
+            latestPopup.blocksRaycasts = false;
         }
         canvasGroup.gameObject.SetActive(true);
-        currentTween.Kill();
-        currentTween = canvasGroup.transform.DOScale(Vector3.one, openAnimation.Duration)
-            .SetEase(openAnimation.Ease).OnComplete(() => openedPopups.Add(canvasGroup));
+        if (currentTweens.TryGetValue(canvasGroup, out var tween))
+        {
+            tween.Kill();
+            currentTweens.Remove(canvasGroup);
+        }
+        currentTweens.TryAdd(canvasGroup, canvasGroup.transform.DOScale(Vector3.one, openAnimation.Duration)
+            .SetEase(openAnimation.Ease).OnComplete(() => openedPopups.Add(canvasGroup)));
     }
 
     public void ClosePopup(PopupType type)
@@ -78,12 +82,16 @@ public class PopupManager : MonoBehaviour
         int previousIndex = openedPopups.FindIndex(x => x == canvasGroup) - 1;
         if (previousIndex > -1 && openedPopups.Count > previousIndex)
         {
-            openedPopups[previousIndex].interactable = true;
+            openedPopups[previousIndex].blocksRaycasts = true;
         }
-        currentTween.Kill();
-        currentTween = canvasGroup.transform.DOScale(Vector3.zero, closeAnimation.Duration)
+        if (currentTweens.TryGetValue(canvasGroup, out var tween))
+        {
+            tween.Kill();
+            currentTweens.Remove(canvasGroup);
+        }
+        currentTweens.TryAdd(canvasGroup, canvasGroup.transform.DOScale(Vector3.zero, closeAnimation.Duration)
             .SetEase(closeAnimation.Ease)
-            .OnComplete(() => FinalizePopup(canvasGroup));
+            .OnComplete(() => FinalizePopup(canvasGroup)));
     }
 
     private void FinalizePopup(CanvasGroup canvasGroup)

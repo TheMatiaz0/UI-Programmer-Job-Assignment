@@ -1366,7 +1366,6 @@ MonoBehaviour:
   quit: {fileID: 657197348}
   settingsWindow: {fileID: 1387478960}
   saveSlot: {fileID: 1786495234}
-  popupManager: {fileID: 1713784443}
 --- !u!1001 &1874455760
 PrefabInstance:
   m_ObjectHideFlags: 0

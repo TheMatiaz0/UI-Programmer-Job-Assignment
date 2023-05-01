@@ -682,7 +682,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7625161656942595398, guid: fa061d1180ea2384da58bd6282b55bbf, type: 3}
       propertyPath: m_text
-      value: Master Volume
+      value: Master_Volume
       objectReference: {fileID: 0}
     - target: {fileID: 8931457655214145382, guid: fa061d1180ea2384da58bd6282b55bbf, type: 3}
       propertyPath: m_AnchorMax.y

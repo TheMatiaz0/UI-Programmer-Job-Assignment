@@ -34,10 +34,10 @@ public class PopupManager : MonoBehaviour
     private void Start()
     {
         CloseAllPopups();
-        var defaultPopupToOpen = allPopups.Find(x => x.Type == PopupType.MainMenu);
-        if (defaultPopupToOpen != null)
+        var defaultPopup = allPopups.Find(x => x.Type == defaultPopupToOpen);
+        if (defaultPopup != null)
         {
-            OpenPopup(defaultPopupToOpen.CanvasGroup);
+            OpenPopup(defaultPopup.CanvasGroup);
         }
         foreach (var popup in allPopups)
         {

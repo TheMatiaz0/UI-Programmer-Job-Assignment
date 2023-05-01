@@ -378,7 +378,7 @@ GameObject:
   - component: {fileID: 6652282416448695254}
   - component: {fileID: 8530443853231546137}
   m_Layer: 5
-  m_Name: SliderScrollbar_Vertical
+  m_Name: VerticalSliderScrollBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

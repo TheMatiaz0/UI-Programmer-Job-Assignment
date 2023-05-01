@@ -5,10 +5,12 @@ using UnityEngine;
 public enum SoundType
 {
     None,
-    ButtonNormal,
+    ButtonClick,
     ButtonClose,
-    ButtonPick,
-    ButtonPickAlt,
+    ButtonSelect,
+    ButtonSelectAlt,
+    ToggleSelect,
+    ToggleClick
 }
 
 public class SoundManager : MonoBehaviour
@@ -21,12 +23,14 @@ public class SoundManager : MonoBehaviour
         [SerializeField]
         private AudioClip audioClip;
         [SerializeField]
-        [Range(0f, 1f)]
-        private float volume;
+        private float volume = 1;
+        [SerializeField]
+        private float pitch = 1;
 
         public SoundType Type => type;
         public AudioClip AudioClip => audioClip;
         public float Volume => volume;
+        public float Pitch => pitch;
     }
 
     [SerializeField]
@@ -65,6 +69,7 @@ public class SoundManager : MonoBehaviour
     private void PlaySound(SoundData sound)
     {
         soundSource.volume = sound.Volume;
+        soundSource.pitch = sound.Pitch;
         soundSource.clip = sound.AudioClip;
         soundSource.Play();
     }

@@ -35,7 +35,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.000030517578, y: 0}
+  m_AnchoredPosition: {x: 0.000061035156, y: 0}
   m_SizeDelta: {x: -2.2629, y: -2.0476}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1932692726320727236
@@ -175,9 +175,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e86cd7c5457a594ead6ded294e2b986, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pressedSound: 1
-  highlightedSound: 3
-  selectedSound: 3
+  pressedSound: 6
+  highlightedSound: 5
+  selectedSound: 5
+  highlightCooldown: 1
 --- !u!1 &5807340199027867917
 GameObject:
   m_ObjectHideFlags: 0
@@ -214,7 +215,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.00010681152, y: 0.000015258789}
+  m_AnchoredPosition: {x: 0.00012207031, y: 0}
   m_SizeDelta: {x: -1.8699989, y: -0.91999817}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4189911789384532855
@@ -240,7 +241,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_RaycastPadding: {x: -25, y: -25, z: -25, w: -25}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:

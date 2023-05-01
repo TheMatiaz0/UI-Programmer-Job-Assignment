@@ -12,24 +12,37 @@ public class ButtonSound : UIBehaviour, IPointerClickHandler, ISelectHandler, IP
     private SoundType highlightedSound;
     [SerializeField]
     private SoundType selectedSound;
+    [SerializeField]
+    private float highlightCooldown = 1;
+
+    private float lastHighlightCooldown;
+
+    protected override void OnDisable()
+    {
+        base.OnDisable();
+        lastHighlightCooldown = 0;
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        if (Time.time >= lastHighlightCooldown)
+        {
+            lastHighlightCooldown = Time.time + highlightCooldown;
+            SoundManager.Instance.Play(highlightedSound);
+        }
+    }
 
     public void OnPointerClick(PointerEventData eventData)
     {
         SoundManager.Instance.Play(pressedSound);
     }
 
-    public void OnPointerEnter(PointerEventData eventData)
-    {
-        SoundManager.Instance.Play(highlightedSound);
-    }
-
     public void OnSelect(BaseEventData eventData)
     {
-        if (eventData is PointerEventData)
+        if (eventData is not PointerEventData)
         {
-            return;
+            SoundManager.Instance.Play(selectedSound);
         }
-        SoundManager.Instance.Play(selectedSound);
     }
 
     public void OnSubmit(BaseEventData eventData)

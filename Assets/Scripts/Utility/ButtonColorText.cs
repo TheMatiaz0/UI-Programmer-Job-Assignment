@@ -12,14 +12,14 @@ public class ButtonColorText : Button
     {
         var color = state switch
         {
-            Selectable.SelectionState.Normal => this.colors.normalColor,
-            Selectable.SelectionState.Highlighted => this.colors.highlightedColor,
-            Selectable.SelectionState.Pressed => this.colors.pressedColor,
-            Selectable.SelectionState.Disabled => this.colors.disabledColor,
+            SelectionState.Normal => this.colors.normalColor,
+            SelectionState.Highlighted => this.colors.highlightedColor,
+            SelectionState.Pressed => this.colors.pressedColor,
+            SelectionState.Disabled => this.colors.disabledColor,
             SelectionState.Selected => this.colors.selectedColor,
             _ => Color.black,
         };
-        if (base.gameObject.activeInHierarchy && this.transition == Selectable.Transition.ColorTint)
+        if (base.gameObject.activeInHierarchy && this.transition == Transition.ColorTint)
         {
             ColorTween(color * this.colors.colorMultiplier, instant);
         }

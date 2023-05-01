@@ -342,6 +342,7 @@ MonoBehaviour:
   pressedSound: 1
   highlightedSound: 3
   selectedSound: 3
+  highlightCooldown: 0.5
 --- !u!1 &3563852460128843411
 GameObject:
   m_ObjectHideFlags: 0

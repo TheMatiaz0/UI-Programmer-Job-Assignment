@@ -15,19 +15,19 @@ public class ButtonSound : UIBehaviour, IPointerClickHandler, ISelectHandler, IP
     [SerializeField]
     private float highlightCooldown = 1;
 
-    private float lastHighlightCooldown;
+    private float lastHighlightTime;
 
     protected override void OnDisable()
     {
         base.OnDisable();
-        lastHighlightCooldown = 0;
+        lastHighlightTime = 0;
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if (Time.time >= lastHighlightCooldown)
+        if (Time.time >= lastHighlightTime)
         {
-            lastHighlightCooldown = Time.time + highlightCooldown;
+            lastHighlightTime = Time.time + highlightCooldown;
             SoundManager.Instance.Play(highlightedSound);
         }
     }

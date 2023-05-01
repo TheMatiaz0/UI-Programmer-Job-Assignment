@@ -787,6 +787,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AudioContent
       objectReference: {fileID: 0}
+    - target: {fileID: 7793670534993417005, guid: 6fe80b4f60afbd640a2414f8ebf92d0f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8096800136750264906, guid: 6fe80b4f60afbd640a2414f8ebf92d0f, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0

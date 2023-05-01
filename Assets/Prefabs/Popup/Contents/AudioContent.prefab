@@ -474,7 +474,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4788100056818706}
   - component: {fileID: 5626111062428943757}
-  - component: {fileID: 5710324519266458055}
   - component: {fileID: 426154328275361621}
   m_Layer: 5
   m_Name: Slider
@@ -557,20 +556,6 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &5710324519266458055
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8231138250107703500}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f19d2dbb4c2c4024f9372235894f61d3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  text: {fileID: 3711452362971058584}
-  slider: {fileID: 5626111062428943757}
 --- !u!114 &426154328275361621
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -724,8 +709,30 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3220326921027742155, guid: fa061d1180ea2384da58bd6282b55bbf, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8096800136750264906}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2045325957414060753, guid: fa061d1180ea2384da58bd6282b55bbf, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8913814474303854946}
   m_SourcePrefab: {fileID: 100100000, guid: fa061d1180ea2384da58bd6282b55bbf, type: 3}
+--- !u!1 &1805661180443828836 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2045325957414060753, guid: fa061d1180ea2384da58bd6282b55bbf, type: 3}
+  m_PrefabInstance: {fileID: 390839386702094517}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8913814474303854946
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1805661180443828836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f19d2dbb4c2c4024f9372235894f61d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: {fileID: 3711452362971058584}
+  slider: {fileID: 5626111062428943757}
 --- !u!224 &3016404718833387902 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3220326921027742155, guid: fa061d1180ea2384da58bd6282b55bbf, type: 3}

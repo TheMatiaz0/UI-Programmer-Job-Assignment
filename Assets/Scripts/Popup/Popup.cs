@@ -20,7 +20,7 @@ public class Popup : MonoBehaviour
 
     private void Awake()
     {
-        closeButton.onClick.AddListener(CloseItself);
+        closeButton?.onClick.AddListener(CloseItself);
     }
 
     public void CloseItself() => OnClose(canvasGroup);

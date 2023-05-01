@@ -6,11 +6,14 @@ using UnityEngine;
 public enum PopupType
 {
     Settings,
-    DetailedSettings
+    DetailedSettings,
+    MainMenu
 }
 
 public class PopupManager : MonoBehaviour
 {
+    [SerializeField]
+    private PopupType defaultPopupToOpen;
     [SerializeField]
     private List<Popup> allPopups;
     [SerializeField]
@@ -31,6 +34,11 @@ public class PopupManager : MonoBehaviour
     private void Start()
     {
         CloseAllPopups();
+        var defaultPopupToOpen = allPopups.Find(x => x.Type == PopupType.MainMenu);
+        if (defaultPopupToOpen != null)
+        {
+            OpenPopup(defaultPopupToOpen.CanvasGroup);
+        }
         foreach (var popup in allPopups)
         {
             popup.OnClose += ClosePopup;

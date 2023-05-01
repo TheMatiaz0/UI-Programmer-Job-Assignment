@@ -1,35 +1,39 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class ButtonSound : MonoBehaviour
+public class ButtonSound : UIBehaviour, IPointerClickHandler, ISelectHandler, IPointerEnterHandler, ISubmitHandler
 {
     [SerializeField]
-    private Button button;
+    private SoundType pressedSound;
     [SerializeField]
-    private SoundType soundType;
+    private SoundType highlightedSound;
+    [SerializeField]
+    private SoundType selectedSound;
 
-    private void Start()
+    public void OnPointerClick(PointerEventData eventData)
     {
-        button.onClick.AddListener(PlaySound);
+        SoundManager.Instance.Play(pressedSound);
     }
 
-    private void PlaySound() => SoundManager.Instance.Play(soundType);
-
-#if UNITY_EDITOR
-
-    private void OnValidate()
+    public void OnPointerEnter(PointerEventData eventData)
     {
-        if (button == null)
-        {
-            button = GetComponent<Button>();
-        }
-        if (soundType == SoundType.None)
-        {
-            Debug.Log($"SoundType is none for {this.gameObject.name}");
-        }
+        SoundManager.Instance.Play(highlightedSound);
     }
 
-#endif
+    public void OnSelect(BaseEventData eventData)
+    {
+        if (eventData is PointerEventData)
+        {
+            return;
+        }
+        SoundManager.Instance.Play(selectedSound);
+    }
+
+    public void OnSubmit(BaseEventData eventData)
+    {
+        SoundManager.Instance.Play(pressedSound);
+    }
 }

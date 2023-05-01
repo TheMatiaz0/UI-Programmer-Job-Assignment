@@ -7,7 +7,8 @@ public enum SoundType
     None,
     ButtonNormal,
     ButtonClose,
-    ButtonPick
+    ButtonPick,
+    ButtonPickAlt,
 }
 
 public class SoundManager : MonoBehaviour

@@ -77,7 +77,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1576232813095300564, guid: 05f005d99b3809f498dcd960ba653015, type: 3}
       propertyPath: m_Navigation.m_Mode
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1576232813095300564, guid: 05f005d99b3809f498dcd960ba653015, type: 3}
       propertyPath: m_Navigation.m_SelectOnUp
@@ -85,7 +85,7 @@ PrefabInstance:
       objectReference: {fileID: 2915576435880818844}
     - target: {fileID: 1576232813095300564, guid: 05f005d99b3809f498dcd960ba653015, type: 3}
       propertyPath: m_Navigation.m_WrapAround
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1576232813095300564, guid: 05f005d99b3809f498dcd960ba653015, type: 3}
       propertyPath: m_Navigation.m_SelectOnDown
@@ -218,7 +218,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1576232813095300564, guid: 05f005d99b3809f498dcd960ba653015, type: 3}
       propertyPath: m_Navigation.m_Mode
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1576232813095300564, guid: 05f005d99b3809f498dcd960ba653015, type: 3}
       propertyPath: m_Navigation.m_SelectOnUp
@@ -226,7 +226,7 @@ PrefabInstance:
       objectReference: {fileID: 4906796047439981208}
     - target: {fileID: 1576232813095300564, guid: 05f005d99b3809f498dcd960ba653015, type: 3}
       propertyPath: m_Navigation.m_WrapAround
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2265629313064788311, guid: 05f005d99b3809f498dcd960ba653015, type: 3}
       propertyPath: m_text
@@ -355,11 +355,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1576232813095300564, guid: 05f005d99b3809f498dcd960ba653015, type: 3}
       propertyPath: m_Navigation.m_Mode
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1576232813095300564, guid: 05f005d99b3809f498dcd960ba653015, type: 3}
       propertyPath: m_Navigation.m_WrapAround
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1576232813095300564, guid: 05f005d99b3809f498dcd960ba653015, type: 3}
       propertyPath: m_Navigation.m_SelectOnDown
@@ -496,7 +496,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1576232813095300564, guid: 05f005d99b3809f498dcd960ba653015, type: 3}
       propertyPath: m_Navigation.m_Mode
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1576232813095300564, guid: 05f005d99b3809f498dcd960ba653015, type: 3}
       propertyPath: m_Navigation.m_SelectOnUp
@@ -504,7 +504,7 @@ PrefabInstance:
       objectReference: {fileID: 1766165820823750151}
     - target: {fileID: 1576232813095300564, guid: 05f005d99b3809f498dcd960ba653015, type: 3}
       propertyPath: m_Navigation.m_WrapAround
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1576232813095300564, guid: 05f005d99b3809f498dcd960ba653015, type: 3}
       propertyPath: m_Colors.m_DisabledColor.b

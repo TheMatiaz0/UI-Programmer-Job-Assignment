@@ -46,23 +46,24 @@ public class GridCellSpawner : MonoBehaviour
 
     private IEnumerator RandomSpawn()
     {
-        List<Vector2Int> previousCells = new();
+        List<Cell> previousCells = new();
         while (true)
         {
             foreach (var previousCell in previousCells)
             {
-                var gridCell = grid.Cells[previousCell.x, previousCell.y];
-                Destroy(gridCell.gameObject);
+                Destroy(previousCell.gameObject);
             }
 
             var rndCount = Random.Range(2, 5);
             previousCells = new();
             for (int i = 0; i < rndCount; i++)
             {
-                Vector2Int rndPosition = new(Random.Range(0, grid.Columns), Random.Range(0, grid.Rows));
+                var rndColumn = Random.Range(0, grid.Columns);
+                var rndRow = Random.Range(0, grid.Rows);
+                Vector2Int rndPosition = new(rndColumn, rndRow);
                 var cell = grid.SpawnCell(rndPosition);
                 cell.Image.color = possibleColors[Random.Range(0, possibleColors.Length)];
-                previousCells.Add(rndPosition);
+                previousCells.Add(cell);
             }
             yield return new WaitForSeconds(Random.Range(minMaxRefreshTime.x, minMaxRefreshTime.y));
         }

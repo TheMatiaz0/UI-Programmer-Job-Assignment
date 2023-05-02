@@ -1428,11 +1428,6 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
---- !u!1 &1387478960 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5183778232952502293, guid: 047157a2851bc044dbf8d9f2b2db489f, type: 3}
-  m_PrefabInstance: {fileID: 4709804040272480692}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &1387478961 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 937915411238198326, guid: 047157a2851bc044dbf8d9f2b2db489f, type: 3}
@@ -1443,10 +1438,21 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1582417939219137626, guid: 047157a2851bc044dbf8d9f2b2db489f, type: 3}
   m_PrefabInstance: {fileID: 4709804040272480692}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1387478960}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1c44b4f188bc1ec45b10f7c405365bc2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1387478965 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3426928314475076935, guid: 047157a2851bc044dbf8d9f2b2db489f, type: 3}
+  m_PrefabInstance: {fileID: 4709804040272480692}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ad9828c0276259489c49b32f896d4ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1633299005
@@ -1749,11 +1755,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!1 &1786495234 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4302843913608794289, guid: 531cb72583882c9419259dedd197a271, type: 3}
-  m_PrefabInstance: {fileID: 8575637607210347874}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1844742644
 GameObject:
   m_ObjectHideFlags: 0
@@ -1845,8 +1846,6 @@ MonoBehaviour:
   startGame: {fileID: 1160458856}
   settings: {fileID: 1089275294}
   quit: {fileID: 657197348}
-  settingsWindow: {fileID: 1387478960}
-  saveSlot: {fileID: 1786495234}
 --- !u!1001 &1874455760
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3204,6 +3203,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 960760211095253888, guid: 531cb72583882c9419259dedd197a271, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1673293690637723179, guid: 531cb72583882c9419259dedd197a271, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -3336,6 +3339,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4026346945089964162, guid: 531cb72583882c9419259dedd197a271, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4051475073034828633, guid: 531cb72583882c9419259dedd197a271, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -3432,6 +3439,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6528398443568532885, guid: 531cb72583882c9419259dedd197a271, type: 3}
+      propertyPath: elements.Array.data[1].leadingPath
+      value: 
+      objectReference: {fileID: 1387478965}
     - target: {fileID: 6605164837848718908, guid: 531cb72583882c9419259dedd197a271, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -3484,6 +3495,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: InteractionContainer
       objectReference: {fileID: 0}
+    - target: {fileID: 8059378244790408104, guid: 531cb72583882c9419259dedd197a271, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8767816473193757666, guid: 531cb72583882c9419259dedd197a271, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -3500,7 +3515,8 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 960760211095253888, guid: 531cb72583882c9419259dedd197a271, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

@@ -6,10 +6,6 @@ public class MenuButtonsController : MonoBehaviour
 {
     [SerializeField]
     private Button startGame, settings, quit;
-    [SerializeField]
-    private GameObject settingsWindow;
-    [SerializeField]
-    private GameObject saveSlot;
 
     private void Awake()
     {
@@ -20,7 +16,6 @@ public class MenuButtonsController : MonoBehaviour
 
     public void StartGame()
     {
-        EventSystem.current.SetSelectedGameObject(saveSlot);
     }
 
     public void OpenSettings() 

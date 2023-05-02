@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8365740836319643725}
   - component: {fileID: 5919191031960666278}
+  - component: {fileID: 6291658656359792590}
   m_Layer: 5
   m_Name: SaveContainer
   m_TagString: Untagged
@@ -66,6 +67,29 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &6291658656359792590
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1110325120623797476}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ad9828c0276259489c49b32f896d4ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chosenMode: 1
+  elements:
+  - button: {fileID: 5681616824401131914}
+    isAbleToPermanentSelect: 0
+    leadingPath: {fileID: 0}
+  - button: {fileID: 7844954623790570580}
+    isAbleToPermanentSelect: 0
+    leadingPath: {fileID: 0}
+  - button: {fileID: 8099164882648861387}
+    isAbleToPermanentSelect: 0
+    leadingPath: {fileID: 0}
 --- !u!1001 &5308975784377164291
 PrefabInstance:
   m_ObjectHideFlags: 0

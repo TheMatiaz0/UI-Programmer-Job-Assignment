@@ -31,6 +31,6 @@ public class SettingsButtonsController : MonoBehaviour
 
     private void OpenDetails(PopupContentType contentType)
     {
-        PopupManager.Instance.OpenPopup(PopupType.DetailedSettings, (popup) => (popup as DynamicPopup).Setup(contentType));
+        PopupManager.Instance.OpenPopup(PopupType.DetailedSettings, (popup) => (popup as DynamicPopup).SetupContent(contentType));
     }
 }

@@ -37,7 +37,7 @@ public class DynamicPopup : Popup
     [SerializeField]
     private List<PopupContent> allContents;
 
-    public void Setup(PopupContentType contentType)
+    public void SetupContent(PopupContentType contentType)
     {
         if (!allContents.Exists(x => x.ContentType == contentType))
         {

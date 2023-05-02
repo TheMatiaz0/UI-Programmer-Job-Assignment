@@ -481,6 +481,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7120792073206051328, guid: a046728cf5dd90648a288ffbaf0de975, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8691668111624466857}
+    - targetCorrespondingSourceObject: {fileID: 7120792073206051328, guid: a046728cf5dd90648a288ffbaf0de975, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3426928314475076935}
   m_SourcePrefab: {fileID: 100100000, guid: a046728cf5dd90648a288ffbaf0de975, type: 3}
 --- !u!114 &42124207860489182 stripped
 MonoBehaviour:
@@ -574,6 +577,41 @@ MonoBehaviour:
     button: {fileID: 3703606720848193335}
   - contentType: 7
     button: {fileID: 3347849524647303391}
+--- !u!114 &3426928314475076935
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5183778232952502293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ad9828c0276259489c49b32f896d4ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chosenMode: 2
+  elements:
+  - button: {fileID: 4593911964947033330}
+    isAbleToPermanentSelect: 1
+    leadingPath: {fileID: 0}
+  - button: {fileID: 42124207860489182}
+    isAbleToPermanentSelect: 1
+    leadingPath: {fileID: 0}
+  - button: {fileID: 781707389051877538}
+    isAbleToPermanentSelect: 1
+    leadingPath: {fileID: 0}
+  - button: {fileID: 3485712408908643907}
+    isAbleToPermanentSelect: 1
+    leadingPath: {fileID: 0}
+  - button: {fileID: 1440212047909229756}
+    isAbleToPermanentSelect: 1
+    leadingPath: {fileID: 0}
+  - button: {fileID: 3703606720848193335}
+    isAbleToPermanentSelect: 1
+    leadingPath: {fileID: 0}
+  - button: {fileID: 3347849524647303391}
+    isAbleToPermanentSelect: 1
+    leadingPath: {fileID: 0}
 --- !u!1001 &2790610903278275299
 PrefabInstance:
   m_ObjectHideFlags: 0

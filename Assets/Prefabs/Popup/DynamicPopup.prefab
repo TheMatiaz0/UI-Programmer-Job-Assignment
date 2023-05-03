@@ -276,6 +276,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4786836654794015379, guid: a046728cf5dd90648a288ffbaf0de975, type: 3}
+      propertyPath: m_Name
+      value: CloseButton
+      objectReference: {fileID: 0}
     - target: {fileID: 5417282327746557120, guid: a046728cf5dd90648a288ffbaf0de975, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0

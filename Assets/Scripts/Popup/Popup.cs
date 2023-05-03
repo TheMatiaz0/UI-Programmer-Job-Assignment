@@ -22,7 +22,10 @@ public class Popup : MonoBehaviour, ICancelHandler
         closeButton?.onClick.AddListener(CloseItself);
     }
 
-    public void CloseItself() => OnClose(canvasGroup);
+    public void CloseItself()
+    {
+        OnClose(canvasGroup);
+    }
 
     public void OnCancel(BaseEventData eventData)
     {

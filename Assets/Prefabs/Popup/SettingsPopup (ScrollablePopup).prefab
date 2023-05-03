@@ -357,6 +357,10 @@ PrefabInstance:
       value: CloseButton
       objectReference: {fileID: 0}
     - target: {fileID: 5160007617390337085, guid: a046728cf5dd90648a288ffbaf0de975, type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5160007617390337085, guid: a046728cf5dd90648a288ffbaf0de975, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 0
       objectReference: {fileID: 0}
@@ -628,6 +632,7 @@ MonoBehaviour:
   - selectable: {fileID: 3347849524647303391}
     isAbleToPermanentSelect: 1
     leadingPath: {fileID: 0}
+  lockedColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
 --- !u!1001 &2790610903278275299
 PrefabInstance:
   m_ObjectHideFlags: 0

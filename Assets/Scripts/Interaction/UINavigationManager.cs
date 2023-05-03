@@ -29,9 +29,13 @@ public class UINavigationManager : MonoBehaviour, ICancelHandler
     private Navigation.Mode chosenMode;
     [SerializeField]
     private List<NavigationElement> elements;
+    [SerializeField]
+    private Color lockedColor = Color.yellow;
 
-    private Selectable currentLocked;
-    private Selectable previousLocked;
+    private Selectable currentSelectable;
+    private Selectable previousSelectable;
+    private Dictionary<Selectable, ColorBlock> selectableColorBlocks = new();
+    private Dictionary<Selectable, Color> selectableImageColors = new();
 
     public UINavigationManager PreviousNavigation { get; private set; }
 
@@ -42,9 +46,16 @@ public class UINavigationManager : MonoBehaviour, ICancelHandler
 
     public void Setup()
     {
-        CleanLockState();
+        selectableImageColors = new();
+        selectableColorBlocks = new();
         foreach (var element in elements)
         {
+            if (element.Selectable.image != null && element.Selectable.colors != null)
+            {
+                selectableImageColors.Add(element.Selectable, element.Selectable.image.color);
+                selectableColorBlocks.Add(element.Selectable, element.Selectable.colors);
+            }
+
             if (element.Selectable is Button)
             {
                 var button = element.Selectable as Button;
@@ -57,6 +68,9 @@ public class UINavigationManager : MonoBehaviour, ICancelHandler
                 cancelSelectable = element.Selectable.AddComponent<CancelableSelectable>();
             }
         }
+
+        CleanLockState();
+
         if (elements.Count > 0)
         {
             EventSystem.current.SetSelectedGameObject(elements[0].Selectable.gameObject);
@@ -71,6 +85,7 @@ public class UINavigationManager : MonoBehaviour, ICancelHandler
     public void GoBack()
     {
         OnWentBack();
+        PreviousNavigation?.CleanLockState();
         GoTo(PreviousNavigation, true);
     }
 
@@ -100,26 +115,26 @@ public class UINavigationManager : MonoBehaviour, ICancelHandler
         }
     }
 
-    private void CleanLockState()
+    public void CleanLockState()
     {
-        previousLocked = currentLocked;
-        if (previousLocked != null)
+        previousSelectable = currentSelectable;
+        if (previousSelectable != null)
         {
-            SetDominantColor(previousLocked, Color.white);
+            ClearLockedColor(previousSelectable);
         }
-        currentLocked = null;
+        currentSelectable = null;
     }
 
     private void SetLockState(NavigationElement clickedElement)
     {
-        previousLocked = currentLocked;
-        if (previousLocked != null)
+        previousSelectable = currentSelectable;
+        if (previousSelectable != null)
         {
-            SetDominantColor(previousLocked, Color.white);
+            ClearLockedColor(previousSelectable);
         }
-        currentLocked = clickedElement.Selectable;
+        currentSelectable = clickedElement.Selectable;
         GoTo(clickedElement.LeadingPath, false);
-        SetDominantColor(currentLocked, Color.red);
+        SetLockedColor(currentSelectable, lockedColor);
     }
 
     private void SetCurrentNavigationMode(Navigation.Mode navigationMode)
@@ -137,11 +152,17 @@ public class UINavigationManager : MonoBehaviour, ICancelHandler
         selectable.navigation = navigation;
     }
 
-    private void SetDominantColor(Selectable selectable, Color color)
+    private void SetLockedColor(Selectable selectable, Color color)
     {
         selectable.image.color = color;
         ColorBlock colors = selectable.colors;
         colors.normalColor = color;
         selectable.colors = colors;
+    }
+
+    private void ClearLockedColor(Selectable selectable)
+    {
+        selectable.colors = selectableColorBlocks[selectable];
+        selectable.image.color = selectableImageColors[selectable];
     }
 }

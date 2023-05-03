@@ -1563,9 +1563,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7582394913200374532, guid: ac92f8346e8571043a341ff4b36d2372, type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7838604236073262506, guid: ac92f8346e8571043a341ff4b36d2372, type: 3}
       propertyPath: m_Name
-      value: IconButton
+      value: CloseButton
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

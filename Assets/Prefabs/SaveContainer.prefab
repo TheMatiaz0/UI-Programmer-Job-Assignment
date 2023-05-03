@@ -81,13 +81,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chosenMode: 1
   elements:
-  - button: {fileID: 5681616824401131914}
+  - selectable: {fileID: 5681616824401131914}
     isAbleToPermanentSelect: 0
     leadingPath: {fileID: 0}
-  - button: {fileID: 7844954623790570580}
+  - selectable: {fileID: 7844954623790570580}
     isAbleToPermanentSelect: 0
     leadingPath: {fileID: 0}
-  - button: {fileID: 8099164882648861387}
+  - selectable: {fileID: 8099164882648861387}
     isAbleToPermanentSelect: 0
     leadingPath: {fileID: 0}
 --- !u!1001 &5308975784377164291

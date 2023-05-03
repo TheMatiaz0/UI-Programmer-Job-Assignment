@@ -80,20 +80,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ad9828c0276259489c49b32f896d4ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  elements:
-  - button: {fileID: 2915576435880818844}
-    isAbleToPermanentSelect: 1
-    leadingPath: {fileID: 0}
-  - button: {fileID: 1766165820823750151}
-    isAbleToPermanentSelect: 1
-    leadingPath: {fileID: 0}
-  - button: {fileID: 4906796047439981208}
-    isAbleToPermanentSelect: 0
-    leadingPath: {fileID: 0}
-  - button: {fileID: 1753908089846807019}
-    isAbleToPermanentSelect: 0
-    leadingPath: {fileID: 0}
   chosenMode: 2
+  elements:
+  - selectable: {fileID: 2915576435880818844}
+    isAbleToPermanentSelect: 1
+    leadingPath: {fileID: 0}
+  - selectable: {fileID: 1766165820823750151}
+    isAbleToPermanentSelect: 1
+    leadingPath: {fileID: 0}
+  - selectable: {fileID: 4906796047439981208}
+    isAbleToPermanentSelect: 0
+    leadingPath: {fileID: 0}
+  - selectable: {fileID: 1753908089846807019}
+    isAbleToPermanentSelect: 0
+    leadingPath: {fileID: 0}
 --- !u!1001 &963006231474006995
 PrefabInstance:
   m_ObjectHideFlags: 0

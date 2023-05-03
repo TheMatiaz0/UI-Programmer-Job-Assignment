@@ -10,13 +10,13 @@ using UnityEngine.UI;
 public class NavigationElement
 {
     [SerializeField]
-    private Button button;
+    private Selectable selectable;
     [SerializeField]
     private bool isAbleToPermanentSelect;
     [SerializeField]
     private UINavigationManager leadingPath;
 
-    public Button Button => button;
+    public Selectable Selectable => selectable;
     public bool IsAbleToPermanentSelect => isAbleToPermanentSelect;
     public UINavigationManager LeadingPath => leadingPath;
 }
@@ -28,43 +28,44 @@ public class UINavigationManager : MonoBehaviour
     [SerializeField]
     private List<NavigationElement> elements;
 
-    private Button currentLocked;
-    private Button previousLocked;
+    private Selectable currentLocked;
+    private Selectable previousLocked;
 
     private GameObject lastSelected;
 
-    public UINavigationManager Prior { get; private set; }
+    public UINavigationManager PreviousNavigation { get; private set; }
 
     private void OnEnable()
     {
         Setup();
     }
 
-    private void Start()
-    {
-
-    }
-
     private void OnDisable()
     {
-        // lastSelected = EventSystem.current.currentSelectedGameObject;
+        if (EventSystem.current != null)
+        {
+            lastSelected = EventSystem.current.currentSelectedGameObject;
+        }
     }
 
     public void Setup()
     {
         foreach (var element in elements)
         {
-            SetCurrentNavigationMode(element.Button, chosenMode);
-            element.Button.onClick.AddListener(() => OnButtonClicked(element));
-            var cancel = element.Button.AddComponent<CancelableSelectable>();
-            cancel.OnCancelled += Cancel_OnCancelled;
+            if (element.Selectable is Button)
+            {
+                var btn = element.Selectable as Button;
+                btn.onClick.AddListener(() => OnButtonClicked(element));
+            }
+            SetCurrentNavigationMode(element.Selectable, chosenMode);
+            var cancelSelectable = element.Selectable.AddComponent<CancelableSelectable>();
+            cancelSelectable.OnCancelled += OnSelectableCancelled;
         }
-        EventSystem.current.SetSelectedGameObject(lastSelected ?? elements[0].Button.gameObject);
+        EventSystem.current.SetSelectedGameObject(lastSelected ?? elements[0]?.Selectable.gameObject);
     }
 
-    private void Cancel_OnCancelled(CancelableSelectable _)
+    private void OnSelectableCancelled(CancelableSelectable _)
     {
-        Debug.Log("tso?");
         GoBack();
     }
 
@@ -77,7 +78,7 @@ public class UINavigationManager : MonoBehaviour
             {
                 SetDominantColor(previousLocked, Color.white);
             }
-            currentLocked = clickedElement.Button;
+            currentLocked = clickedElement.Selectable;
             GoTo(clickedElement.LeadingPath);
             SetDominantColor(currentLocked, Color.red);
         }
@@ -96,40 +97,38 @@ public class UINavigationManager : MonoBehaviour
     {
         if (navigationPath != null)
         {
-            navigationPath.Prior = this;
+            navigationPath.PreviousNavigation = this;
             this.SetCurrentNavigationMode(Navigation.Mode.None);
             navigationPath.enabled = true;
             this.enabled = false;
         }
     }
 
-    [ContextMenu("GO BACK")]
     public void GoBack()
     {
-        Debug.Log($"return to {Prior}");
-        GoTo(Prior);
+        GoTo(PreviousNavigation);
     }
 
     public void SetCurrentNavigationMode(Navigation.Mode navigationMode)
     {
         foreach (var element in elements)
         {
-            SetCurrentNavigationMode(element.Button, navigationMode);
+            SetCurrentNavigationMode(element.Selectable, navigationMode);
         }
     }
 
-    private void SetCurrentNavigationMode(Button button, Navigation.Mode navigationMode)
+    private void SetCurrentNavigationMode(Selectable selectable, Navigation.Mode navigationMode)
     {
-        Navigation nav = button.navigation;
-        nav.mode = navigationMode;
-        button.navigation = nav;
+        Navigation navigation = selectable.navigation;
+        navigation.mode = navigationMode;
+        selectable.navigation = navigation;
     }
 
-    private void SetDominantColor(Button btn, Color color)
+    private void SetDominantColor(Selectable selectable, Color color)
     {
-        btn.image.color = color;
-        ColorBlock b = btn.colors;
-        b.normalColor = color;
-        btn.colors = b;
+        selectable.image.color = color;
+        ColorBlock colors = selectable.colors;
+        colors.normalColor = color;
+        selectable.colors = colors;
     }
 }

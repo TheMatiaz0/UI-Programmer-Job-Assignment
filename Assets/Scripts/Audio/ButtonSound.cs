@@ -15,7 +15,7 @@ public class ButtonSound : UIBehaviour, IPointerClickHandler, ISelectHandler, IP
     [SerializeField]
     private float highlightCooldown = 1;
 
-    private float lastHighlightTime;
+    private static float lastHighlightTime;
 
     protected override void OnDisable()
     {

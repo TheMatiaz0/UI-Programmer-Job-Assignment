@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -32,6 +33,8 @@ public class UINavigationManager : MonoBehaviour
 
     private GameObject lastSelected;
 
+    public UINavigationManager Prior { get; private set; }
+
     private void OnEnable()
     {
         Setup();
@@ -39,12 +42,12 @@ public class UINavigationManager : MonoBehaviour
 
     private void Start()
     {
-        EventSystem.current.SetSelectedGameObject(lastSelected ?? elements[0].Button.gameObject);
+
     }
 
     private void OnDisable()
     {
-        lastSelected = EventSystem.current.currentSelectedGameObject;
+        // lastSelected = EventSystem.current.currentSelectedGameObject;
     }
 
     public void Setup()
@@ -53,7 +56,16 @@ public class UINavigationManager : MonoBehaviour
         {
             SetCurrentNavigationMode(element.Button, chosenMode);
             element.Button.onClick.AddListener(() => OnButtonClicked(element));
+            var cancel = element.Button.AddComponent<CancelableSelectable>();
+            cancel.OnCancelled += Cancel_OnCancelled;
         }
+        EventSystem.current.SetSelectedGameObject(lastSelected ?? elements[0].Button.gameObject);
+    }
+
+    private void Cancel_OnCancelled(CancelableSelectable _)
+    {
+        Debug.Log("tso?");
+        GoBack();
     }
 
     private void OnButtonClicked(NavigationElement clickedElement)
@@ -66,11 +78,7 @@ public class UINavigationManager : MonoBehaviour
                 SetDominantColor(previousLocked, Color.white);
             }
             currentLocked = clickedElement.Button;
-            if (clickedElement.LeadingPath != null)
-            {
-                SetCurrentNavigationMode(Navigation.Mode.None);
-                clickedElement.LeadingPath.enabled = true;
-            }
+            GoTo(clickedElement.LeadingPath);
             SetDominantColor(currentLocked, Color.red);
         }
         else
@@ -84,26 +92,44 @@ public class UINavigationManager : MonoBehaviour
         }
     }
 
+    public void GoTo(UINavigationManager navigationPath)
+    {
+        if (navigationPath != null)
+        {
+            navigationPath.Prior = this;
+            this.SetCurrentNavigationMode(Navigation.Mode.None);
+            navigationPath.enabled = true;
+            this.enabled = false;
+        }
+    }
+
+    [ContextMenu("GO BACK")]
+    public void GoBack()
+    {
+        Debug.Log($"return to {Prior}");
+        GoTo(Prior);
+    }
+
+    public void SetCurrentNavigationMode(Navigation.Mode navigationMode)
+    {
+        foreach (var element in elements)
+        {
+            SetCurrentNavigationMode(element.Button, navigationMode);
+        }
+    }
+
+    private void SetCurrentNavigationMode(Button button, Navigation.Mode navigationMode)
+    {
+        Navigation nav = button.navigation;
+        nav.mode = navigationMode;
+        button.navigation = nav;
+    }
+
     private void SetDominantColor(Button btn, Color color)
     {
         btn.image.color = color;
         ColorBlock b = btn.colors;
         b.normalColor = color;
         btn.colors = b;
-    }
-
-    private void SetCurrentNavigationMode(Button button, Navigation.Mode mode)
-    {
-        Navigation nav = button.navigation;
-        nav.mode = mode;
-        button.navigation = nav;
-    }
-
-    private void SetCurrentNavigationMode(Navigation.Mode nav)
-    {
-        foreach (var item in elements)
-        {
-            SetCurrentNavigationMode(item.Button, nav);
-        }
     }
 }

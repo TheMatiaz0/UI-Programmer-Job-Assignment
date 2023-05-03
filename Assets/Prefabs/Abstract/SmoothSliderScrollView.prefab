@@ -288,8 +288,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffa96653ff8f57d47819af14c5eedda9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  viewport: {fileID: 8997411789415203276}
-  content: {fileID: 1518092858152888882}
   scrollRect: {fileID: 3087148572071065924}
 --- !u!1 &5193709657180446796
 GameObject:
@@ -454,7 +452,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 0
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -474,7 +472,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 2287655446934032058}
   m_FillRect: {fileID: 0}
   m_HandleRect: {fileID: 8336170561845703833}

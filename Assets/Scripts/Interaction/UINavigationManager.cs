@@ -31,8 +31,6 @@ public class UINavigationManager : MonoBehaviour
     private Selectable currentLocked;
     private Selectable previousLocked;
 
-    private GameObject lastSelected;
-
     public UINavigationManager PreviousNavigation { get; private set; }
 
     private void OnEnable()
@@ -40,28 +38,28 @@ public class UINavigationManager : MonoBehaviour
         Setup();
     }
 
-    private void OnDisable()
-    {
-        if (EventSystem.current != null)
-        {
-            lastSelected = EventSystem.current.currentSelectedGameObject;
-        }
-    }
-
     public void Setup()
     {
+        CleanLocked();
         foreach (var element in elements)
         {
             if (element.Selectable is Button)
             {
-                var btn = element.Selectable as Button;
-                btn.onClick.AddListener(() => OnButtonClicked(element));
+                var button = element.Selectable as Button;
+                button.onClick.AddListener(() => OnButtonClicked(element));
             }
             SetCurrentNavigationMode(element.Selectable, chosenMode);
-            var cancelSelectable = element.Selectable.AddComponent<CancelableSelectable>();
+            var cancelSelectable = element.Selectable.GetComponent<CancelableSelectable>();
+            if (cancelSelectable == null)
+            {
+                cancelSelectable = element.Selectable.AddComponent<CancelableSelectable>();
+            }
             cancelSelectable.OnCancelled += OnSelectableCancelled;
         }
-        EventSystem.current.SetSelectedGameObject(lastSelected ?? elements[0]?.Selectable.gameObject);
+        if (elements.Count > 0)
+        {
+            EventSystem.current.SetSelectedGameObject(elements[0].Selectable.gameObject);
+        }
     }
 
     private void OnSelectableCancelled(CancelableSelectable _)
@@ -73,24 +71,34 @@ public class UINavigationManager : MonoBehaviour
     {
         if (clickedElement.IsAbleToPermanentSelect)
         {
-            previousLocked = currentLocked;
-            if (previousLocked != null)
-            {
-                SetDominantColor(previousLocked, Color.white);
-            }
-            currentLocked = clickedElement.Selectable;
-            GoTo(clickedElement.LeadingPath);
-            SetDominantColor(currentLocked, Color.red);
+            SetLocked(clickedElement);
         }
         else
         {
-            previousLocked = currentLocked;
-            if (previousLocked != null)
-            {
-                SetDominantColor(previousLocked, Color.white);
-            }
-            currentLocked = null;
+            CleanLocked();
         }
+    }
+
+    private void CleanLocked()
+    {
+        previousLocked = currentLocked;
+        if (previousLocked != null)
+        {
+            SetDominantColor(previousLocked, Color.white);
+        }
+        currentLocked = null;
+    }
+
+    private void SetLocked(NavigationElement clickedElement)
+    {
+        previousLocked = currentLocked;
+        if (previousLocked != null)
+        {
+            SetDominantColor(previousLocked, Color.white);
+        }
+        currentLocked = clickedElement.Selectable;
+        GoTo(clickedElement.LeadingPath);
+        SetDominantColor(currentLocked, Color.red);
     }
 
     public void GoTo(UINavigationManager navigationPath)

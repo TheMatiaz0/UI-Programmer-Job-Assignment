@@ -11,8 +11,12 @@ public class ScrollSnapper : MonoBehaviour
     {
         foreach (Transform contentItem in scrollRect.content)
         {
-            var selectable = contentItem.AddComponent<ScrollSnapSelectable>();
-            selectable.Rect = contentItem.GetComponent<RectTransform>();
+            ScrollSnapSelectable selectable = contentItem.GetComponent<ScrollSnapSelectable>();
+            if (selectable == null)
+            {
+                selectable = contentItem.AddComponent<ScrollSnapSelectable>();
+                selectable.Rect = contentItem.GetComponent<RectTransform>();
+            }
             selectable.OnSelected += OnSelected;
         }
     }

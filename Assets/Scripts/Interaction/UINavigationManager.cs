@@ -21,7 +21,7 @@ public class NavigationElement
     public UINavigationManager LeadingPath => leadingPath;
 }
 
-public class UINavigationManager : MonoBehaviour
+public class UINavigationManager : MonoBehaviour, ICancelHandler
 {
     [SerializeField]
     private Navigation.Mode chosenMode;
@@ -40,7 +40,7 @@ public class UINavigationManager : MonoBehaviour
 
     public void Setup()
     {
-        CleanLocked();
+        CleanLockState();
         foreach (var element in elements)
         {
             if (element.Selectable is Button)
@@ -54,7 +54,6 @@ public class UINavigationManager : MonoBehaviour
             {
                 cancelSelectable = element.Selectable.AddComponent<CancelableSelectable>();
             }
-            cancelSelectable.OnCancelled += OnSelectableCancelled;
         }
         if (elements.Count > 0)
         {
@@ -62,43 +61,14 @@ public class UINavigationManager : MonoBehaviour
         }
     }
 
-    private void OnSelectableCancelled(CancelableSelectable _)
+    public void OnCancel(BaseEventData eventData)
     {
         GoBack();
     }
 
-    private void OnButtonClicked(NavigationElement clickedElement)
+    public void GoBack()
     {
-        if (clickedElement.IsAbleToPermanentSelect)
-        {
-            SetLocked(clickedElement);
-        }
-        else
-        {
-            CleanLocked();
-        }
-    }
-
-    private void CleanLocked()
-    {
-        previousLocked = currentLocked;
-        if (previousLocked != null)
-        {
-            SetDominantColor(previousLocked, Color.white);
-        }
-        currentLocked = null;
-    }
-
-    private void SetLocked(NavigationElement clickedElement)
-    {
-        previousLocked = currentLocked;
-        if (previousLocked != null)
-        {
-            SetDominantColor(previousLocked, Color.white);
-        }
-        currentLocked = clickedElement.Selectable;
-        GoTo(clickedElement.LeadingPath);
-        SetDominantColor(currentLocked, Color.red);
+        GoTo(PreviousNavigation);
     }
 
     public void GoTo(UINavigationManager navigationPath)
@@ -112,12 +82,41 @@ public class UINavigationManager : MonoBehaviour
         }
     }
 
-    public void GoBack()
+    private void OnButtonClicked(NavigationElement clickedElement)
     {
-        GoTo(PreviousNavigation);
+        if (clickedElement.IsAbleToPermanentSelect)
+        {
+            SetLockState(clickedElement);
+        }
+        else
+        {
+            CleanLockState();
+        }
     }
 
-    public void SetCurrentNavigationMode(Navigation.Mode navigationMode)
+    private void CleanLockState()
+    {
+        previousLocked = currentLocked;
+        if (previousLocked != null)
+        {
+            SetDominantColor(previousLocked, Color.white);
+        }
+        currentLocked = null;
+    }
+
+    private void SetLockState(NavigationElement clickedElement)
+    {
+        previousLocked = currentLocked;
+        if (previousLocked != null)
+        {
+            SetDominantColor(previousLocked, Color.white);
+        }
+        currentLocked = clickedElement.Selectable;
+        GoTo(clickedElement.LeadingPath);
+        SetDominantColor(currentLocked, Color.red);
+    }
+
+    private void SetCurrentNavigationMode(Navigation.Mode navigationMode)
     {
         foreach (var element in elements)
         {

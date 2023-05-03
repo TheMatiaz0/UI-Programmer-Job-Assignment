@@ -1,5 +1,6 @@
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class ScrollSnapper : MonoBehaviour
@@ -15,9 +16,12 @@ public class ScrollSnapper : MonoBehaviour
             if (selectable == null)
             {
                 selectable = contentItem.AddComponent<ScrollSnapSelectable>();
-                selectable.Rect = contentItem.GetComponent<RectTransform>();
             }
             selectable.OnSelected += OnSelected;
+        }
+        if (EventSystem.current != null && EventSystem.current.currentSelectedGameObject != null)
+        {
+            SnapTo(EventSystem.current.currentSelectedGameObject.GetComponent<RectTransform>());
         }
     }
 

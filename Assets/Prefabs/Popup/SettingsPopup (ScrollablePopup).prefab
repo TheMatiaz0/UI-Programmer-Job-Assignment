@@ -28,6 +28,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 40972375774010040, guid: a046728cf5dd90648a288ffbaf0de975, type: 3}
+      propertyPath: m_Name
+      value: WindowHeader
+      objectReference: {fileID: 0}
     - target: {fileID: 45603260968704387, guid: a046728cf5dd90648a288ffbaf0de975, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -348,6 +352,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4786836654794015379, guid: a046728cf5dd90648a288ffbaf0de975, type: 3}
+      propertyPath: m_Name
+      value: CloseButton
+      objectReference: {fileID: 0}
     - target: {fileID: 5160007617390337085, guid: a046728cf5dd90648a288ffbaf0de975, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 0
@@ -367,6 +375,10 @@ PrefabInstance:
     - target: {fileID: 5417282327746557120, guid: a046728cf5dd90648a288ffbaf0de975, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5580783514733220760, guid: a046728cf5dd90648a288ffbaf0de975, type: 3}
+      propertyPath: m_Name
+      value: Mask
       objectReference: {fileID: 0}
     - target: {fileID: 5703747044197403403, guid: a046728cf5dd90648a288ffbaf0de975, type: 3}
       propertyPath: m_AnchorMax.y
@@ -455,6 +467,10 @@ PrefabInstance:
     - target: {fileID: 8172287017840841840, guid: a046728cf5dd90648a288ffbaf0de975, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -689.802
+      objectReference: {fileID: 0}
+    - target: {fileID: 8181994130526948309, guid: a046728cf5dd90648a288ffbaf0de975, type: 3}
+      propertyPath: m_Name
+      value: WindowContent
       objectReference: {fileID: 0}
     - target: {fileID: 8966121179289422855, guid: a046728cf5dd90648a288ffbaf0de975, type: 3}
       propertyPath: m_AnchoredPosition.y

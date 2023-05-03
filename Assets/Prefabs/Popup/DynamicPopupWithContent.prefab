@@ -503,6 +503,22 @@ PrefabInstance:
       value: Credits
       objectReference: {fileID: 0}
     - target: {fileID: 7743971139364390348, guid: 6a909ff2cbd90ee47a26a5859627a492, type: 3}
+      propertyPath: allContents.Array.data[0].navigator
+      value: 
+      objectReference: {fileID: 2533064000555992816}
+    - target: {fileID: 7743971139364390348, guid: 6a909ff2cbd90ee47a26a5859627a492, type: 3}
+      propertyPath: allContents.Array.data[1].navigator
+      value: 
+      objectReference: {fileID: 79952233177794859}
+    - target: {fileID: 7743971139364390348, guid: 6a909ff2cbd90ee47a26a5859627a492, type: 3}
+      propertyPath: allContents.Array.data[2].navigator
+      value: 
+      objectReference: {fileID: 8121108724876340859}
+    - target: {fileID: 7743971139364390348, guid: 6a909ff2cbd90ee47a26a5859627a492, type: 3}
+      propertyPath: allContents.Array.data[3].navigator
+      value: 
+      objectReference: {fileID: 8757254201745689799}
+    - target: {fileID: 7743971139364390348, guid: 6a909ff2cbd90ee47a26a5859627a492, type: 3}
       propertyPath: allContents.Array.data[0].gameObject
       value: 
       objectReference: {fileID: 7269286694031014807}

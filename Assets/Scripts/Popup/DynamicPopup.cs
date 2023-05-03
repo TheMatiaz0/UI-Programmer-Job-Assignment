@@ -24,10 +24,13 @@ public class PopupContent
     private string title;
     [SerializeField]
     private GameObject gameObject;
+    [SerializeField]
+    private UINavigationManager navigator;
 
     public PopupContentType ContentType => contentType;
     public string Title => title;
     public GameObject GameObject => gameObject;
+    public UINavigationManager Navigator => navigator;
 }
 
 public class DynamicPopup : Popup
@@ -54,7 +57,17 @@ public class DynamicPopup : Popup
             if (content.ContentType == selected)
             {
                 title.SetText(content.Title);
+                content.Navigator.OnWentBack += Navigator_OnWentBack;
+            }
+            else
+            {
+                content.Navigator.OnWentBack -= Navigator_OnWentBack;
             }
         }
+    }
+
+    private void Navigator_OnWentBack()
+    {
+        CloseItself();
     }
 }

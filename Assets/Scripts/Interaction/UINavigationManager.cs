@@ -23,6 +23,8 @@ public class NavigationElement
 
 public class UINavigationManager : MonoBehaviour, ICancelHandler
 {
+    public event Action OnWentBack = delegate { };
+
     [SerializeField]
     private Navigation.Mode chosenMode;
     [SerializeField]
@@ -68,14 +70,18 @@ public class UINavigationManager : MonoBehaviour, ICancelHandler
 
     public void GoBack()
     {
-        GoTo(PreviousNavigation);
+        OnWentBack();
+        GoTo(PreviousNavigation, true);
     }
 
-    public void GoTo(UINavigationManager navigationPath)
+    public void GoTo(UINavigationManager navigationPath, bool isGoingBack)
     {
         if (navigationPath != null)
         {
-            navigationPath.PreviousNavigation = this;
+            if (!isGoingBack)
+            {
+                navigationPath.PreviousNavigation = this;
+            }
             this.SetCurrentNavigationMode(Navigation.Mode.None);
             navigationPath.enabled = true;
             this.enabled = false;
@@ -112,7 +118,7 @@ public class UINavigationManager : MonoBehaviour, ICancelHandler
             SetDominantColor(previousLocked, Color.white);
         }
         currentLocked = clickedElement.Selectable;
-        GoTo(clickedElement.LeadingPath);
+        GoTo(clickedElement.LeadingPath, false);
         SetDominantColor(currentLocked, Color.red);
     }
 

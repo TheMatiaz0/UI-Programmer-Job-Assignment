@@ -8,6 +8,7 @@ public class CancelableSelectable : MonoBehaviour, ICancelHandler
 
     public void OnCancel(BaseEventData eventData)
     {
+        ExecuteEvents.ExecuteHierarchy(transform.parent.gameObject, eventData, ExecuteEvents.cancelHandler);
         OnCancelled.Invoke(this);
     }
 }

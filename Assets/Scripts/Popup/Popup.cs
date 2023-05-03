@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class Popup : MonoBehaviour
+public class Popup : MonoBehaviour, ICancelHandler
 {
     public event Action<CanvasGroup> OnClose = delegate { };
 
@@ -25,6 +25,11 @@ public class Popup : MonoBehaviour
     }
 
     public void CloseItself() => OnClose(canvasGroup);
+
+    public void OnCancel(BaseEventData eventData)
+    {
+        CloseItself();
+    }
 
 #if UNITY_EDITOR
 

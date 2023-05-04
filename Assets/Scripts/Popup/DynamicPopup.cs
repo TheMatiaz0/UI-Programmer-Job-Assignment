@@ -3,34 +3,17 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
+[Flags]
 public enum PopupContentType
 {
     None = 0,
-    Controls = 1,
-    Graphics = 2,
-    Audio = 3,
-    Language = 4,
-    Gameplay = 5,
-    Accessibility = 6,
-    Credits = 7,
-}
-
-[Serializable]
-public class PopupContent
-{
-    [SerializeField]
-    private PopupContentType contentType;
-    [SerializeField] 
-    private string title;
-    [SerializeField]
-    private GameObject gameObject;
-    [SerializeField]
-    private UINavigationManager navigator;
-
-    public PopupContentType ContentType => contentType;
-    public string Title => title;
-    public GameObject GameObject => gameObject;
-    public UINavigationManager Navigator => navigator;
+    Controls = 1 << 0,
+    Graphics = 1 << 1,
+    Audio = 1 << 2,
+    Language = 1 << 3,
+    Gameplay = 1 << 4,
+    Accessibility = 1 << 5,
+    Credits = 1 << 6,
 }
 
 public class DynamicPopup : Popup
@@ -40,9 +23,11 @@ public class DynamicPopup : Popup
     [SerializeField]
     private List<PopupContent> allContents;
 
+    private PopupContent selectedContent;
+
     public void SetupContent(PopupContentType contentType)
     {
-        if (!allContents.Exists(x => x.ContentType == contentType))
+        if (!allContents.Exists(x => (x.ContentType & contentType) != 0))
         {
             contentType = PopupContentType.None;
         }
@@ -53,20 +38,26 @@ public class DynamicPopup : Popup
     {
         foreach (var content in allContents)
         {
-            content.GameObject.SetActive(content.ContentType == selected);
-            if (content.ContentType == selected)
+            content.gameObject.SetActive((content.ContentType & selected) != 0);
+            if ((content.ContentType & selected) != 0)
             {
                 title.SetText(content.Title);
-                content.Navigator.OnWentBack += Navigator_OnWentBack;
+                selectedContent = content;
+                content.OnCancelled += OnCancelled;
             }
             else
             {
-                content.Navigator.OnWentBack -= Navigator_OnWentBack;
+                content.OnCancelled -= OnCancelled;
             }
         }
     }
 
-    private void Navigator_OnWentBack()
+    public override void CloseItself()
+    {
+        CloseItself(selectedContent.Navigator);
+    }
+
+    private void OnCancelled(PopupContent content)
     {
         CloseItself();
     }

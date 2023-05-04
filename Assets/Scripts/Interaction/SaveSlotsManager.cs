@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -17,10 +16,12 @@ public class Slot
     public Button LoadButton => loadButton;
 }
 
-public class SaveSlotsManager : MonoBehaviour
+public class SaveSlotsManager : MonoBehaviour, ICancelHandler
 {
     [SerializeField]
     private List<Slot> slots;
+
+    private Button selectedSlotButton;
 
     private void Start()
     {
@@ -40,7 +41,13 @@ public class SaveSlotsManager : MonoBehaviour
             }
         }
         var slotObject = clickedSlot.LoadButton.gameObject;
+        selectedSlotButton = clickedSlot.SlotButton;
         slotObject.SetActive(true);
         EventSystem.current.SetSelectedGameObject(slotObject);
+    }
+
+    public void OnCancel(BaseEventData eventData)
+    {
+        EventSystem.current.SetSelectedGameObject(selectedSlotButton.gameObject);
     }
 }

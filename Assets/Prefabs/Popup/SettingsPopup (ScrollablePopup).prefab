@@ -252,6 +252,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Language
       objectReference: {fileID: 0}
+    - target: {fileID: 3519484787411177039, guid: a046728cf5dd90648a288ffbaf0de975, type: 3}
+      propertyPath: navigator
+      value: 
+      objectReference: {fileID: 3426928314475076935}
     - target: {fileID: 3722400065074918687, guid: a046728cf5dd90648a288ffbaf0de975, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -587,15 +591,15 @@ MonoBehaviour:
     button: {fileID: 4593911964947033330}
   - contentType: 2
     button: {fileID: 42124207860489182}
-  - contentType: 3
-    button: {fileID: 781707389051877538}
   - contentType: 4
+    button: {fileID: 781707389051877538}
+  - contentType: 8
     button: {fileID: 3485712408908643907}
-  - contentType: 5
+  - contentType: 16
     button: {fileID: 1440212047909229756}
-  - contentType: 6
+  - contentType: 32
     button: {fileID: 3703606720848193335}
-  - contentType: 7
+  - contentType: 64
     button: {fileID: 3347849524647303391}
 --- !u!114 &3426928314475076935
 MonoBehaviour:

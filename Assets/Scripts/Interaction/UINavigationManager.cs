@@ -23,7 +23,7 @@ public class NavigationElement
 
 public class UINavigationManager : MonoBehaviour, ICancelHandler
 {
-    public event Action OnWentBack = delegate { };
+    public event Action<UINavigationManager> OnWentBack = delegate { };
 
     [SerializeField]
     private Navigation.Mode chosenMode;
@@ -42,12 +42,6 @@ public class UINavigationManager : MonoBehaviour, ICancelHandler
     private void OnEnable()
     {
         Setup();
-    }
-
-    private void OnDisable()
-    {
-        Debug.Log("oNdISABLE");
-        // GoBack();
     }
 
     public void Setup()
@@ -74,8 +68,12 @@ public class UINavigationManager : MonoBehaviour, ICancelHandler
             }
         }
 
-        CleanLockState();
+        CleanLockedState();
+        Reselect();
+    }
 
+    private void Reselect()
+    {
         if (elements.Count > 0)
         {
             EventSystem.current.SetSelectedGameObject(elements[0].Selectable.gameObject);
@@ -87,10 +85,13 @@ public class UINavigationManager : MonoBehaviour, ICancelHandler
         GoBack();
     }
 
-    public void GoBack()
+    public void GoBack(bool invokeCallback = true)
     {
-        OnWentBack();
-        PreviousNavigation?.CleanLockState();
+        if (invokeCallback)
+        {
+            OnWentBack(this);
+        }
+        PreviousNavigation?.CleanLockedState();
         GoTo(PreviousNavigation, true);
     }
 
@@ -112,15 +113,15 @@ public class UINavigationManager : MonoBehaviour, ICancelHandler
     {
         if (clickedElement.IsAbleToPermanentSelect)
         {
-            SetLockState(clickedElement);
+            SetLockedState(clickedElement);
         }
         else
         {
-            CleanLockState();
+            CleanLockedState();
         }
     }
 
-    public void CleanLockState()
+    public void CleanLockedState()
     {
         previousSelectable = currentSelectable;
         if (previousSelectable != null)
@@ -130,7 +131,7 @@ public class UINavigationManager : MonoBehaviour, ICancelHandler
         currentSelectable = null;
     }
 
-    private void SetLockState(NavigationElement clickedElement)
+    private void SetLockedState(NavigationElement clickedElement)
     {
         previousSelectable = currentSelectable;
         if (previousSelectable != null)

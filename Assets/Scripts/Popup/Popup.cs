@@ -13,6 +13,8 @@ public class Popup : MonoBehaviour, ICancelHandler
     private CanvasGroup canvasGroup;
     [SerializeField]
     private Button closeButton;
+    [SerializeField]
+    private UINavigationManager navigator;
 
     public PopupType Type => type;
     public CanvasGroup CanvasGroup => canvasGroup;
@@ -22,9 +24,15 @@ public class Popup : MonoBehaviour, ICancelHandler
         closeButton?.onClick.AddListener(CloseItself);
     }
 
-    public void CloseItself()
+    public void CloseItself(UINavigationManager navigator)
     {
         OnClose(canvasGroup);
+        navigator.GoBack();
+    }
+
+    public virtual void CloseItself()
+    {
+        CloseItself(navigator);
     }
 
     public void OnCancel(BaseEventData eventData)

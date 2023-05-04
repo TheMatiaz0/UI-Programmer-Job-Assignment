@@ -44,6 +44,12 @@ public class UINavigationManager : MonoBehaviour, ICancelHandler
         Setup();
     }
 
+    private void OnDisable()
+    {
+        Debug.Log("oNdISABLE");
+        // GoBack();
+    }
+
     public void Setup()
     {
         selectableImageColors = new();
@@ -55,7 +61,6 @@ public class UINavigationManager : MonoBehaviour, ICancelHandler
                 selectableImageColors.Add(element.Selectable, element.Selectable.image.color);
                 selectableColorBlocks.Add(element.Selectable, element.Selectable.colors);
             }
-
             if (element.Selectable is Button)
             {
                 var button = element.Selectable as Button;

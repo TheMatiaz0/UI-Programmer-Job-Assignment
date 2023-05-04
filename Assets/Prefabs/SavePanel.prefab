@@ -393,8 +393,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e86cd7c5457a594ead6ded294e2b986, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  button: {fileID: 4164500163951929544}
-  soundType: 3
+  pressedSound: 6
+  highlightedSound: 5
+  selectedSound: 5
+  highlightCooldown: 1
 --- !u!1 &7641926915853212635
 GameObject:
   m_ObjectHideFlags: 0

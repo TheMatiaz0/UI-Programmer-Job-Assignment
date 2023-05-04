@@ -6,14 +6,14 @@ using UnityEngine.UI;
 
 public class ButtonSound : UIBehaviour, IPointerClickHandler, ISelectHandler, IPointerEnterHandler, ISubmitHandler
 {
+    private const float HighlightCooldown = 0.3f;
+
     [SerializeField]
     private SoundType pressedSound;
     [SerializeField]
     private SoundType highlightedSound;
     [SerializeField]
     private SoundType selectedSound;
-    [SerializeField]
-    private float highlightCooldown = 1;
 
     private static float lastHighlightTime;
 
@@ -27,7 +27,7 @@ public class ButtonSound : UIBehaviour, IPointerClickHandler, ISelectHandler, IP
     {
         if (Time.time >= lastHighlightTime && SoundManager.Instance != null)
         {
-            lastHighlightTime = Time.time + highlightCooldown;
+            lastHighlightTime = Time.time + HighlightCooldown;
             SoundManager.Instance.Play(highlightedSound);
         }
     }

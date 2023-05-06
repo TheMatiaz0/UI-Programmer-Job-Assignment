@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class ButtonColorText : Button
+public class CustomButton : Button
 {
     private const float GraphicElementsFadeDuration = 0.1f;
 

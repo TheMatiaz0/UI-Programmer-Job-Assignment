@@ -5,8 +5,8 @@ using UnityEditor.SceneManagement;
 using UnityEditor.UI;
 using UnityEngine;
 
-[CustomEditor(typeof(ButtonColorText))]
-public class ButtonColorTextEditor : ButtonEditor
+[CustomEditor(typeof(CustomButton))]
+public class CustomButtonEditor : ButtonEditor
 {
     private SerializedProperty graphicElementsProperty;
     private SerializedProperty fullyDisabledProperty;
@@ -16,7 +16,6 @@ public class ButtonColorTextEditor : ButtonEditor
         base.OnEnable();
         graphicElementsProperty = serializedObject.FindProperty("colorTintGraphicElements");
         fullyDisabledProperty = serializedObject.FindProperty("extortSelection");
-        // fadeDurationProperty = serializedObject.FindProperty("graphicElementsFadeDuration");
     }
 
     public override void OnInspectorGUI()
@@ -24,7 +23,6 @@ public class ButtonColorTextEditor : ButtonEditor
         base.OnInspectorGUI();
         EditorGUILayout.PropertyField(graphicElementsProperty);
         EditorGUILayout.PropertyField(fullyDisabledProperty);
-        // EditorGUILayout.FloatField(fadeDurationProperty.floatValue);
         serializedObject.ApplyModifiedProperties();
     }
 }

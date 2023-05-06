@@ -14,6 +14,8 @@ public class ButtonSound : UIBehaviour, IPointerClickHandler, ISelectHandler, IP
     private SoundType highlightedSound;
     [SerializeField]
     private SoundType selectedSound;
+    [SerializeField]
+    private Selectable selectable;
 
     private static float lastHighlightTime;
 
@@ -42,6 +44,7 @@ public class ButtonSound : UIBehaviour, IPointerClickHandler, ISelectHandler, IP
 
     public void OnSelect(BaseEventData eventData)
     {
+        Debug.Log(selectable.interactable);
         if (eventData is not PointerEventData && SoundManager.Instance != null)
         {
             SoundManager.Instance.Play(selectedSound);
@@ -55,4 +58,17 @@ public class ButtonSound : UIBehaviour, IPointerClickHandler, ISelectHandler, IP
             SoundManager.Instance.Play(pressedSound);
         }
     }
+
+#if UNITY_EDITOR
+
+    protected override void OnValidate()
+    {
+        base.OnValidate();
+        if (selectable == null)
+        {
+            selectable = GetComponent<Selectable>();
+        }
+    }
+
+#endif
 }

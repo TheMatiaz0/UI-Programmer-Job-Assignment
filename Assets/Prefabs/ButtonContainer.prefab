@@ -94,6 +94,7 @@ MonoBehaviour:
   - selectable: {fileID: 1753908089846807019}
     isAbleToPermanentSelect: 0
     leadingPath: {fileID: 0}
+  lockedColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
 --- !u!1001 &963006231474006995
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -102,6 +103,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4378408740772155704}
     m_Modifications:
+    - target: {fileID: 1576232813095300564, guid: 05f005d99b3809f498dcd960ba653015, type: 3}
+      propertyPath: m_Interactable
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1576232813095300564, guid: 05f005d99b3809f498dcd960ba653015, type: 3}
       propertyPath: m_Navigation.m_Mode
       value: 2
@@ -244,6 +249,14 @@ PrefabInstance:
     m_TransformParent: {fileID: 4378408740772155704}
     m_Modifications:
     - target: {fileID: 1576232813095300564, guid: 05f005d99b3809f498dcd960ba653015, type: 3}
+      propertyPath: extortSelection
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1576232813095300564, guid: 05f005d99b3809f498dcd960ba653015, type: 3}
+      propertyPath: isFullyDisabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1576232813095300564, guid: 05f005d99b3809f498dcd960ba653015, type: 3}
       propertyPath: m_Navigation.m_Mode
       value: 2
       objectReference: {fileID: 0}
@@ -380,6 +393,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4378408740772155704}
     m_Modifications:
+    - target: {fileID: 1576232813095300564, guid: 05f005d99b3809f498dcd960ba653015, type: 3}
+      propertyPath: m_Interactable
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1576232813095300564, guid: 05f005d99b3809f498dcd960ba653015, type: 3}
       propertyPath: m_Navigation.m_Mode
       value: 2
@@ -518,10 +535,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 4378408740772155704}
     m_Modifications:
     - target: {fileID: 1576232813095300564, guid: 05f005d99b3809f498dcd960ba653015, type: 3}
-      propertyPath: m_Interactable
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1576232813095300564, guid: 05f005d99b3809f498dcd960ba653015, type: 3}
       propertyPath: m_Navigation.m_Mode
       value: 2
       objectReference: {fileID: 0}
@@ -532,18 +545,6 @@ PrefabInstance:
     - target: {fileID: 1576232813095300564, guid: 05f005d99b3809f498dcd960ba653015, type: 3}
       propertyPath: m_Navigation.m_WrapAround
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1576232813095300564, guid: 05f005d99b3809f498dcd960ba653015, type: 3}
-      propertyPath: m_Colors.m_DisabledColor.b
-      value: 0.07636168
-      objectReference: {fileID: 0}
-    - target: {fileID: 1576232813095300564, guid: 05f005d99b3809f498dcd960ba653015, type: 3}
-      propertyPath: m_Colors.m_DisabledColor.g
-      value: 0.07636168
-      objectReference: {fileID: 0}
-    - target: {fileID: 1576232813095300564, guid: 05f005d99b3809f498dcd960ba653015, type: 3}
-      propertyPath: m_Colors.m_DisabledColor.r
-      value: 0.11320752
       objectReference: {fileID: 0}
     - target: {fileID: 1576232813095300564, guid: 05f005d99b3809f498dcd960ba653015, type: 3}
       propertyPath: m_Navigation.m_SelectOnDown

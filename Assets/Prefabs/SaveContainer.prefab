@@ -83,14 +83,14 @@ MonoBehaviour:
   chosenMode: 3
   elements:
   - selectable: {fileID: 5681616824401131914}
-    isAbleToPermanentSelect: 0
-    leadingPath: {fileID: 0}
+    isAbleToPermanentSelect: 1
+    leadingPath: {fileID: 281111448919866626}
   - selectable: {fileID: 7844954623790570580}
-    isAbleToPermanentSelect: 0
-    leadingPath: {fileID: 0}
+    isAbleToPermanentSelect: 1
+    leadingPath: {fileID: 2116326718596072519}
   - selectable: {fileID: 8099164882648861387}
-    isAbleToPermanentSelect: 0
-    leadingPath: {fileID: 0}
+    isAbleToPermanentSelect: 1
+    leadingPath: {fileID: 4422767062285188619}
   lockedColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
 --- !u!114 &809629913222425869
 MonoBehaviour:

@@ -48,6 +48,11 @@ public class SaveSlotsManager : MonoBehaviour, ICancelHandler
 
     public void OnCancel(BaseEventData eventData)
     {
-        EventSystem.current.SetSelectedGameObject(selectedSlotButton.gameObject);
+        /*
+        if (selectedSlotButton != null)
+        {
+            EventSystem.current.SetSelectedGameObject(selectedSlotButton.gameObject);
+        }
+        */
     }
 }

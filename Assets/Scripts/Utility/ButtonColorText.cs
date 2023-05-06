@@ -7,10 +7,32 @@ public class ButtonColorText : Button
 
     [SerializeField]
     private Graphic[] colorTintGraphicElements;
+    [Header("Only for non-Interactable Button")]
+    [SerializeField]
+    private bool extortSelection = false;
+
+    public bool ExtortSelection => extortSelection;
 
     protected override void DoStateTransition(SelectionState state, bool instant)
     {
-        var color = state switch
+        Color color;
+        if (extortSelection)
+        {
+            color = GetDisabledColors(state);
+        }
+        else
+        {
+            color = GetNormalColor(state);
+        }
+        if (base.gameObject.activeInHierarchy && this.transition == Transition.ColorTint)
+        {
+            ColorTween(color * this.colors.colorMultiplier, instant);
+        }
+    }
+
+    private Color GetNormalColor(SelectionState state)
+    {
+        return state switch
         {
             SelectionState.Normal => this.colors.normalColor,
             SelectionState.Highlighted => this.colors.highlightedColor,
@@ -19,10 +41,26 @@ public class ButtonColorText : Button
             SelectionState.Selected => this.colors.selectedColor,
             _ => Color.black,
         };
-        if (base.gameObject.activeInHierarchy && this.transition == Transition.ColorTint)
+    }
+
+    private Color GetDisabledColors(SelectionState state)
+    {
+        return state switch
         {
-            ColorTween(color * this.colors.colorMultiplier, instant);
-        }
+            SelectionState.Normal => this.colors.disabledColor,
+            SelectionState.Highlighted => BrightenColor(this.colors.disabledColor, 0.4f),
+            SelectionState.Pressed => BrightenColor(this.colors.disabledColor, 0.2f),
+            SelectionState.Disabled => this.colors.disabledColor,
+            SelectionState.Selected => BrightenColor(this.colors.disabledColor, 0.4f),
+            _ => Color.black,
+        };
+    }
+
+    private Color BrightenColor(Color color, float summand)
+    {
+        Color.RGBToHSV(color, out var hue, out var saturation, out var brightness);
+        brightness += summand;
+        return Color.HSVToRGB(hue, saturation, brightness);
     }
 
     private void ColorTween(Color targetColor, bool instant)
@@ -32,5 +70,10 @@ public class ButtonColorText : Button
         {
             graphic.CrossFadeColor(targetColor.IsColorDark() ? Color.white : Color.black, (!instant) ? GraphicElementsFadeDuration : 0f, true, true);
         }
+    }
+
+    public override bool IsInteractable()
+    {
+        return base.IsInteractable() || extortSelection;
     }
 }

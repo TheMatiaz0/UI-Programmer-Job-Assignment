@@ -37,7 +37,7 @@ public class ButtonSound : UIBehaviour, IPointerClickHandler, ISelectHandler, IP
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (SoundManager.Instance != null)
+        if (SoundManager.Instance != null && selectable.interactable)
         {
             SoundManager.Instance.Play(pressedSound);
         }
@@ -53,7 +53,7 @@ public class ButtonSound : UIBehaviour, IPointerClickHandler, ISelectHandler, IP
 
     public void OnSubmit(BaseEventData eventData)
     {
-        if (SoundManager.Instance != null)
+        if (SoundManager.Instance != null && selectable.interactable)
         {
             SoundManager.Instance.Play(pressedSound);
         }

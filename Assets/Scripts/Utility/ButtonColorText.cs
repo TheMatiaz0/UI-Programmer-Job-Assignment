@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class ButtonColorText : Button
@@ -12,6 +13,27 @@ public class ButtonColorText : Button
     private bool extortSelection = false;
 
     public bool ExtortSelection => extortSelection;
+
+    public override bool IsInteractable()
+    {
+        return base.IsInteractable() || extortSelection;
+    }
+
+    public override void OnPointerClick(PointerEventData eventData)
+    {
+        if (interactable)
+        {
+            base.OnPointerClick(eventData);
+        }
+    }
+
+    public override void OnSubmit(BaseEventData eventData)
+    {
+        if (interactable)
+        {
+            base.OnSubmit(eventData);
+        }
+    }
 
     protected override void DoStateTransition(SelectionState state, bool instant)
     {
@@ -70,10 +92,5 @@ public class ButtonColorText : Button
         {
             graphic.CrossFadeColor(targetColor.IsColorDark() ? Color.white : Color.black, (!instant) ? GraphicElementsFadeDuration : 0f, true, true);
         }
-    }
-
-    public override bool IsInteractable()
-    {
-        return base.IsInteractable() || extortSelection;
     }
 }

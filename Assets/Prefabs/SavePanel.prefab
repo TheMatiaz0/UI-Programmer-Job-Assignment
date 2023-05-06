@@ -361,7 +361,7 @@ MonoBehaviour:
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
-    m_FadeDuration: 0.2
+    m_FadeDuration: 0.25
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
     m_PressedSprite: {fileID: 0}
@@ -381,6 +381,7 @@ MonoBehaviour:
   colorTintGraphicElements:
   - {fileID: 1235767788254930834}
   - {fileID: 2300928833234975868}
+  extortSelection: 0
 --- !u!114 &5111187788743217035
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -396,6 +397,7 @@ MonoBehaviour:
   pressedSound: 6
   highlightedSound: 5
   selectedSound: 5
+  selectable: {fileID: 4164500163951929544}
 --- !u!1 &7641926915853212635
 GameObject:
   m_ObjectHideFlags: 0

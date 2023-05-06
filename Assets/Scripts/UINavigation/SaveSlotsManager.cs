@@ -21,7 +21,7 @@ public class SaveSlotsManager : MonoBehaviour, ICancelHandler
     [SerializeField]
     private List<Slot> slots;
 
-    private Button selectedSlotButton;
+    private Slot selectedSlot;
 
     private void Start()
     {
@@ -41,18 +41,16 @@ public class SaveSlotsManager : MonoBehaviour, ICancelHandler
             }
         }
         var slotObject = clickedSlot.LoadButton.gameObject;
-        selectedSlotButton = clickedSlot.SlotButton;
+        selectedSlot = clickedSlot;
         slotObject.SetActive(true);
         EventSystem.current.SetSelectedGameObject(slotObject);
     }
 
     public void OnCancel(BaseEventData eventData)
     {
-        /*
-        if (selectedSlotButton != null)
+        if (selectedSlot != null && selectedSlot.LoadButton != null)
         {
-            EventSystem.current.SetSelectedGameObject(selectedSlotButton.gameObject);
+            selectedSlot.LoadButton.gameObject.SetActive(false);
         }
-        */
     }
 }

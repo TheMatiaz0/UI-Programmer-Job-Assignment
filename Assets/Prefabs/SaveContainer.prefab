@@ -91,7 +91,7 @@ MonoBehaviour:
   - selectable: {fileID: 8099164882648861387}
     isAbleToPermanentSelect: 1
     leadingPath: {fileID: 4422767062285188619}
-  lockedColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  lockedColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 0.3529412}
 --- !u!114 &809629913222425869
 MonoBehaviour:
   m_ObjectHideFlags: 0

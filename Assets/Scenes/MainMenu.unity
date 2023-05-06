@@ -2589,6 +2589,10 @@ MonoBehaviour:
     audioClip: {fileID: 8300000, guid: 162f21c0c58798d41832115f3d0de26a, type: 3}
     volume: 0.4
     pitch: 1.5
+  - type: 7
+    audioClip: {fileID: 8300000, guid: 6432dc7e174b58e4cbf302b88e53b307, type: 3}
+    volume: 0.3
+    pitch: 0.5
   soundSource: {fileID: 2096673006}
 --- !u!1001 &3992472949982954046
 PrefabInstance:

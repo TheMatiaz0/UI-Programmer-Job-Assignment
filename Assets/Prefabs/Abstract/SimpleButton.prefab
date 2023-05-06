@@ -320,14 +320,14 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 0
+  m_Interactable: 1
   m_TargetGraphic: {fileID: 1022749637025625875}
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
   colorTintGraphicElements:
   - {fileID: 2265629313064788311}
-  shouldBeAbleToSelect: 1
+  extortSelection: 0
 --- !u!114 &4945560763201532584
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -343,6 +343,7 @@ MonoBehaviour:
   pressedSound: 1
   highlightedSound: 3
   selectedSound: 3
+  selectable: {fileID: 1576232813095300564}
 --- !u!1 &3563852460128843411
 GameObject:
   m_ObjectHideFlags: 0

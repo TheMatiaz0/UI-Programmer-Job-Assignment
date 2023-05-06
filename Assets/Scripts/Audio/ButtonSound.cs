@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class ButtonSound : UIBehaviour, IPointerClickHandler, ISelectHandler, IPointerEnterHandler, ISubmitHandler
 {
     private const float HighlightCooldown = 0.3f;
+    private const SoundType NotInteractableSelection = SoundType.SelectDisabled;
 
     [SerializeField]
     private SoundType pressedSound;
@@ -30,7 +31,7 @@ public class ButtonSound : UIBehaviour, IPointerClickHandler, ISelectHandler, IP
         if (Time.time >= lastHighlightTime && SoundManager.Instance != null)
         {
             lastHighlightTime = Time.time + HighlightCooldown;
-            SoundManager.Instance.Play(highlightedSound);
+            SoundManager.Instance.Play(selectable.interactable ? highlightedSound : NotInteractableSelection);
         }
     }
 
@@ -44,10 +45,9 @@ public class ButtonSound : UIBehaviour, IPointerClickHandler, ISelectHandler, IP
 
     public void OnSelect(BaseEventData eventData)
     {
-        Debug.Log(selectable.interactable);
         if (eventData is not PointerEventData && SoundManager.Instance != null)
         {
-            SoundManager.Instance.Play(selectedSound);
+            SoundManager.Instance.Play(selectable.interactable ? selectedSound : NotInteractableSelection);
         }
     }
 

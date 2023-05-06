@@ -10,7 +10,8 @@ public enum SoundType
     ButtonSelect,
     ButtonSelectAlt,
     ToggleSelect,
-    ToggleClick
+    ToggleClick,
+    SelectDisabled,
 }
 
 public class SoundManager : MonoBehaviour

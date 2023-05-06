@@ -249,6 +249,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 4378408740772155704}
     m_Modifications:
     - target: {fileID: 1576232813095300564, guid: 05f005d99b3809f498dcd960ba653015, type: 3}
+      propertyPath: m_Interactable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1576232813095300564, guid: 05f005d99b3809f498dcd960ba653015, type: 3}
       propertyPath: extortSelection
       value: 1
       objectReference: {fileID: 0}

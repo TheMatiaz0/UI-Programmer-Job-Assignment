@@ -22,7 +22,8 @@ public class PopupManager : MonoBehaviour
     private TweenData closeAnimation;
 
     private List<CanvasGroup> openedPopups = new();
-    private readonly Dictionary<CanvasGroup, Tween> currentTweens = new();
+    private Tween openTween;
+    private Tween closeTween;
 
     public static PopupManager Instance { get; private set; }
 
@@ -33,14 +34,12 @@ public class PopupManager : MonoBehaviour
 
     private void Start()
     {
-        CloseAllPopups();
-        var defaultPopup = allPopups.Find(x => x.Type == defaultPopupToOpen);
-        if (defaultPopup != null)
-        {
-            OpenPopup(defaultPopup.CanvasGroup);
-        }
         foreach (var popup in allPopups)
         {
+            if (popup.Type != defaultPopupToOpen)
+            {
+                ClosePopup(popup.CanvasGroup);
+            }
             popup.OnClose += ClosePopup;
         }
     }
@@ -66,16 +65,17 @@ public class PopupManager : MonoBehaviour
 
     public void OpenPopup(CanvasGroup canvasGroup)
     {
+        closeTween?.Kill();
         if (openedPopups.Count >= 1)
         {
             var latestPopup = openedPopups[^1];
             latestPopup.blocksRaycasts = false;
         }
         canvasGroup.gameObject.SetActive(true);
-        KillCurrentTween(canvasGroup);
-        currentTweens.TryAdd(canvasGroup, canvasGroup.transform.DOScale(Vector3.one, openAnimation.Duration)
-            .SetEase(openAnimation.Ease)
-            .OnComplete(() => openedPopups.Add(canvasGroup)));
+        openTween?.Kill(true);
+        openedPopups.Add(canvasGroup);
+        openTween = canvasGroup.transform.DOScale(Vector3.one, openAnimation.Duration)
+            .SetEase(openAnimation.Ease).SetTarget(this);
     }
 
     public void ClosePopup(PopupType type)
@@ -86,30 +86,24 @@ public class PopupManager : MonoBehaviour
 
     public void ClosePopup(CanvasGroup canvasGroup)
     {
+        openTween?.Kill();
         int previousIndex = openedPopups.FindIndex(x => x == canvasGroup) - 1;
         if (previousIndex > -1 && openedPopups.Count > previousIndex)
         {
             openedPopups[previousIndex].blocksRaycasts = true;
         }
-        KillCurrentTween(canvasGroup);
-        currentTweens.TryAdd(canvasGroup, canvasGroup.transform.DOScale(Vector3.zero, closeAnimation.Duration)
+        closeTween?.Kill(true);
+        openedPopups.Remove(canvasGroup);
+        closeTween = canvasGroup.transform.DOScale(Vector3.zero, closeAnimation.Duration)
             .SetEase(closeAnimation.Ease)
-            .OnComplete(() => FinalizePopup(canvasGroup)));
-    }
-
-    private void KillCurrentTween(CanvasGroup canvasGroup)
-    {
-        if (currentTweens.TryGetValue(canvasGroup, out var tween))
-        {
-            tween.Kill();
-            currentTweens.Remove(canvasGroup);
-        }
+            .OnKill(() => FinalizePopup(canvasGroup))
+            .OnComplete(() => FinalizePopup(canvasGroup)).SetTarget(this);
     }
 
     private void FinalizePopup(CanvasGroup canvasGroup)
     {
+        canvasGroup.blocksRaycasts = true;
         canvasGroup.gameObject.SetActive(false);
-        openedPopups.Remove(canvasGroup);
     }
 
     public void CloseAllPopups()

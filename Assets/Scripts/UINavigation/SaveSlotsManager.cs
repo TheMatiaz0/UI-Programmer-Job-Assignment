@@ -43,7 +43,6 @@ public class SaveSlotsManager : MonoBehaviour, ICancelHandler
         var slotObject = clickedSlot.LoadButton.gameObject;
         selectedSlot = clickedSlot;
         slotObject.SetActive(true);
-        EventSystem.current.SetSelectedGameObject(slotObject);
     }
 
     public void OnCancel(BaseEventData eventData)

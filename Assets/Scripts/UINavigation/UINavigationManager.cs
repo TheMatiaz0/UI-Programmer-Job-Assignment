@@ -21,7 +21,7 @@ public class NavigationElement
     public UINavigationManager LeadingPath => leadingPath;
 }
 
-public class UINavigationManager : MonoBehaviour, ICancelHandler
+public class UINavigationManager : MonoBehaviour, ICancelHandler, ISelectHandler
 {
     public event Action<UINavigationManager> OnWentBack = delegate { };
 
@@ -36,6 +36,7 @@ public class UINavigationManager : MonoBehaviour, ICancelHandler
     private Selectable previousSelectable;
     private Dictionary<Selectable, ColorBlock> selectableColorBlocks = new();
     private Dictionary<Selectable, Color> selectableImageColors = new();
+    private GameObject lastSelected;
 
     public UINavigationManager PreviousNavigation { get; private set; }
 
@@ -76,7 +77,7 @@ public class UINavigationManager : MonoBehaviour, ICancelHandler
     {
         if (elements.Count > 0)
         {
-            EventSystem.current.SetSelectedGameObject(elements[0].Selectable.gameObject);
+            EventSystem.current.SetSelectedGameObject(lastSelected == null ? elements[0].Selectable.gameObject : lastSelected);
         }
     }
 
@@ -123,24 +124,25 @@ public class UINavigationManager : MonoBehaviour, ICancelHandler
 
     public void CleanLockedState()
     {
-        previousSelectable = currentSelectable;
-        if (previousSelectable != null)
-        {
-            ClearLockedColor(previousSelectable);
-        }
+        SetPreviousSelectable();
         currentSelectable = null;
     }
 
     private void SetLockedState(NavigationElement clickedElement)
+    {
+        SetPreviousSelectable();
+        currentSelectable = clickedElement.Selectable;
+        GoTo(clickedElement.LeadingPath, false);
+        SetLockedColor(currentSelectable, lockedColor);
+    }
+
+    private void SetPreviousSelectable()
     {
         previousSelectable = currentSelectable;
         if (previousSelectable != null)
         {
             ClearLockedColor(previousSelectable);
         }
-        currentSelectable = clickedElement.Selectable;
-        GoTo(clickedElement.LeadingPath, false);
-        SetLockedColor(currentSelectable, lockedColor);
     }
 
     private void SetCurrentNavigationMode(Navigation.Mode navigationMode)
@@ -170,5 +172,14 @@ public class UINavigationManager : MonoBehaviour, ICancelHandler
     {
         selectable.colors = selectableColorBlocks[selectable];
         selectable.image.color = selectableImageColors[selectable];
+    }
+
+    public void OnSelect(BaseEventData eventData)
+    {
+        var navigationElement = elements.Find(x => x.Selectable.gameObject == eventData.selectedObject);
+        if (navigationElement != null)
+        {
+            lastSelected = navigationElement.Selectable.gameObject;
+        }
     }
 }

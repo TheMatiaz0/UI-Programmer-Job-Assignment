@@ -298,7 +298,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chosenMode: 0
-  elements: []
+  elements:
+  - selectable: {fileID: 8967274507174965248}
+    isAbleToPermanentSelect: 0
+    leadingPath: {fileID: 0}
   lockedColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
 --- !u!114 &8099164882648861387 stripped
 MonoBehaviour:
@@ -517,7 +520,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chosenMode: 0
-  elements: []
+  elements:
+  - selectable: {fileID: 6974610730030376607}
+    isAbleToPermanentSelect: 0
+    leadingPath: {fileID: 0}
   lockedColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
 --- !u!114 &6974610730030376607 stripped
 MonoBehaviour:
@@ -754,5 +760,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chosenMode: 0
-  elements: []
+  elements:
+  - selectable: {fileID: 4813507209268888385}
+    isAbleToPermanentSelect: 0
+    leadingPath: {fileID: 0}
   lockedColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}

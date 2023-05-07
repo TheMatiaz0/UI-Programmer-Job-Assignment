@@ -13,6 +13,8 @@ public class GridPlacement : MonoBehaviour
 {
     [Header("References")]
     [SerializeField]
+    private Canvas canvas;
+    [SerializeField]
     private Cell cellPrefab;
     [SerializeField]
     private RectTransform grid;
@@ -34,18 +36,18 @@ public class GridPlacement : MonoBehaviour
 
     private Vector2 vectCorner;
     private Vector2 center;
+    private RectTransform canvasRectTransform;
 
     private void Awake()
     {
+        canvasRectTransform = canvas.GetComponent<RectTransform>();
         StartCoroutine(Setup());
     }
 
     private IEnumerator Setup()
     {
         yield return new WaitForEndOfFrame();
-        var worldCorners = new Vector3[4];
-        grid.GetWorldCorners(worldCorners);
-        vectCorner = (Vector2)worldCorners[(int)corner];
+        vectCorner = grid.RectTransformToScreenSpace(canvas.worldCamera).position;
         center = new Vector2(cellSize, cellSize) * .5f;
         Cells = new Cell[Columns, Rows];
     }
@@ -68,10 +70,21 @@ public class GridPlacement : MonoBehaviour
 
     public Cell SpawnCell(Vector2Int cellPosition)
     {
-        Cell cell = Instantiate(cellPrefab, GetWorldPosition(cellPosition) + center, Quaternion.identity, this.transform);
+        Cell cell = Instantiate(cellPrefab, GetTruePosition(cellPosition), Quaternion.identity, this.transform);
         Cells[cellPosition.x, cellPosition.y] = cell;
         cell.gameObject.name = $"Cell {cellPosition.x} {cellPosition.y}";
         return cell;
+    }
+
+    private Vector2 GetTruePosition(Vector2Int cellPosition)
+    {
+        RectTransformUtility.ScreenPointToWorldPointInRectangle(
+            canvasRectTransform,
+            GetWorldPosition(cellPosition) + center,
+            canvas.worldCamera,
+            out var output);
+
+        return output;
     }
 
     private Vector2 GetWorldPosition(Vector2Int cellPosition)

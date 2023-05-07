@@ -1,11 +1,10 @@
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class MenuButtonsController : MonoBehaviour
 {
     [SerializeField]
-    private Button startGame, settings, quit;
+    private Button settings, quit;
     [SerializeField]
     private CanvasGroup mainView;
 

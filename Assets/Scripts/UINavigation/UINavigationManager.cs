@@ -81,7 +81,7 @@ public class UINavigationManager : MonoBehaviour, ICancelHandler, ISelectHandler
         CleanLockedState();
     }
 
-    private void Reselect()
+    public void Reselect()
     {
         if (elements.Count > 0)
         {

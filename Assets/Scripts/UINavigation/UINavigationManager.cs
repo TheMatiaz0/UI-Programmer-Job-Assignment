@@ -51,7 +51,7 @@ public class UINavigationManager : MonoBehaviour, ICancelHandler, ISelectHandler
         selectableColorBlocks = new();
         foreach (var element in elements)
         {
-            if (element.Selectable.image != null && element.Selectable.colors != null)
+            if (element.Selectable.image != null)
             {
                 selectableImageColors.Add(element.Selectable, element.Selectable.image.color);
                 selectableColorBlocks.Add(element.Selectable, element.Selectable.colors);

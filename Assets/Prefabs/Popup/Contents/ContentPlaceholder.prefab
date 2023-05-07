@@ -204,7 +204,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: UI designer ran out of time
+  m_text: 'LOST KITTEN
+
+    HAVE YOU SEEN HER?
+
+    CALL 404-301-4782'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2fe28422a6bd46e4698555c7d9887031, type: 2}
   m_sharedMaterial: {fileID: 3522397761174744097, guid: 2fe28422a6bd46e4698555c7d9887031, type: 2}

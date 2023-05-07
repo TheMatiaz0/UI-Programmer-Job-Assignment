@@ -113,8 +113,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 5, y: 5}
-  m_SizeDelta: {x: -10, y: -10}
+  m_AnchoredPosition: {x: 5.1225, y: 5}
+  m_SizeDelta: {x: -10.2448, y: -10}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &341741703706721386
 GameObject:
@@ -896,6 +896,7 @@ MonoBehaviour:
   type: 0
   canvasGroup: {fileID: 4314990120223295122}
   closeButton: {fileID: 5160007617390337085}
+  navigator: {fileID: 0}
 --- !u!1 &7328136953217613655
 GameObject:
   m_ObjectHideFlags: 0
@@ -931,8 +932,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 2.8839111, y: 2.3441772}
-  m_SizeDelta: {x: 8, y: -2.0883}
+  m_AnchoredPosition: {x: 2.8839111, y: -0.5}
+  m_SizeDelta: {x: 8.1161, y: -3}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!222 &8597227295299932117
 CanvasRenderer:

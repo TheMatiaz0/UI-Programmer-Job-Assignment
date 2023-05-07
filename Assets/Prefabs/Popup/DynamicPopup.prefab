@@ -405,6 +405,7 @@ MonoBehaviour:
   type: 1
   canvasGroup: {fileID: 8272712040019645229}
   closeButton: {fileID: 1059323330346174850}
+  navigator: {fileID: 0}
   title: {fileID: 8611131757407607600}
   allContents: []
 --- !u!225 &8272712040019645229 stripped

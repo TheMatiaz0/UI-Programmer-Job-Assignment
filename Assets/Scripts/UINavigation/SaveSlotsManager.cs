@@ -20,6 +20,8 @@ public class SaveSlotsManager : MonoBehaviour, ICancelHandler
 {
     [SerializeField]
     private List<Slot> slots;
+    [SerializeField]
+    private ReverseUINavigationPointer reverseNavigator;
 
     private Slot selectedSlot;
 
@@ -43,6 +45,7 @@ public class SaveSlotsManager : MonoBehaviour, ICancelHandler
         var slotObject = clickedSlot.LoadButton.gameObject;
         selectedSlot = clickedSlot;
         slotObject.SetActive(true);
+        reverseNavigator.Setup(selectedSlot.SlotButton);
     }
 
     public void OnCancel(BaseEventData eventData)

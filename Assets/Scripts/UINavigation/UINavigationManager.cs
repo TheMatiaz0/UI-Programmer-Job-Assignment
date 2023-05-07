@@ -21,7 +21,7 @@ public class NavigationElement
     public UINavigationManager LeadingPath => leadingPath;
 }
 
-public class UINavigationManager : MonoBehaviour, ICancelHandler, ISelectHandler
+public class UINavigationManager : MonoBehaviour, ICancelHandler, ISelectHandler, IDeselectHandler 
 {
     public event Action<UINavigationManager> OnWentBack = delegate { };
 
@@ -36,13 +36,22 @@ public class UINavigationManager : MonoBehaviour, ICancelHandler, ISelectHandler
     private Selectable previousSelectable;
     private Dictionary<Selectable, ColorBlock> selectableColorBlocks = new();
     private Dictionary<Selectable, Color> selectableImageColors = new();
-    private GameObject lastSelected;
+    private GameObject lastSelectedObject;
 
     public UINavigationManager PreviousNavigation { get; private set; }
+    public List<NavigationElement> Elements => elements;
 
     private void OnEnable()
     {
-        Setup();
+        if (PreviousNavigation == null)
+        {
+            Setup();
+        }
+    }
+
+    private void OnDisable()
+    {
+        StopAllCoroutines();
     }
 
     public void Setup()
@@ -70,14 +79,13 @@ public class UINavigationManager : MonoBehaviour, ICancelHandler, ISelectHandler
         }
 
         CleanLockedState();
-        Reselect();
     }
 
     private void Reselect()
     {
         if (elements.Count > 0)
         {
-            EventSystem.current.SetSelectedGameObject(lastSelected == null ? elements[0].Selectable.gameObject : lastSelected);
+            EventSystem.current.SetSelectedGameObject(lastSelectedObject == null ? elements[0].Selectable.gameObject : lastSelectedObject);
         }
     }
 
@@ -106,11 +114,13 @@ public class UINavigationManager : MonoBehaviour, ICancelHandler, ISelectHandler
             }
             this.SetCurrentNavigationMode(Navigation.Mode.None);
             navigationPath.enabled = true;
+            navigationPath.Setup();
+            navigationPath.Reselect();
             this.enabled = false;
         }
     }
 
-    private void OnButtonClicked(NavigationElement clickedElement)
+    public void OnButtonClicked(NavigationElement clickedElement)
     {
         if (clickedElement.IsAbleToPermanentSelect)
         {
@@ -179,7 +189,21 @@ public class UINavigationManager : MonoBehaviour, ICancelHandler, ISelectHandler
         var navigationElement = elements.Find(x => x.Selectable.gameObject == eventData.selectedObject);
         if (navigationElement != null)
         {
-            lastSelected = navigationElement.Selectable.gameObject;
+            lastSelectedObject = navigationElement.Selectable.gameObject;
+        }
+    }
+
+    public void OnDeselect(BaseEventData eventData)
+    {
+        StartCoroutine(SelectWithDelay(eventData));
+    }
+
+    private IEnumerator SelectWithDelay(BaseEventData eventData)
+    {
+        yield return new WaitForEndOfFrame();
+        if (!elements.Exists(x => x.Selectable.gameObject == eventData.selectedObject))
+        {
+            Reselect();
         }
     }
 }

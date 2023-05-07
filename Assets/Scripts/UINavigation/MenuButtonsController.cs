@@ -11,13 +11,8 @@ public class MenuButtonsController : MonoBehaviour
 
     private void Awake()
     {
-        startGame.onClick.AddListener(StartGame);
         settings.onClick.AddListener(OpenSettings);
         quit.onClick.AddListener(Application.Quit);
-    }
-
-    public void StartGame()
-    {
     }
 
     public void OpenSettings() 

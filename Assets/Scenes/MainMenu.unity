@@ -1218,7 +1218,7 @@ MonoBehaviour:
   m_InputType: 0
   m_AsteriskChar: 42
   m_KeyboardType: 0
-  m_LineType: 0
+  m_LineType: 2
   m_HideMobileInput: 1
   m_HideSoftKeyboard: 1
   m_CharacterValidation: 0
@@ -1256,12 +1256,12 @@ MonoBehaviour:
     \" \" << b << endl;\r\n    int temp = a;\r\n    a = b;\r\n    b = temp;\r\n   
     cout << a << \" \" << b << endl;\r\n    return 0;\u200B\n}"
   m_CaretBlinkRate: 0.85
-  m_CaretWidth: 2
-  m_ReadOnly: 1
+  m_CaretWidth: 4
+  m_ReadOnly: 0
   m_RichText: 0
   m_GlobalFontAsset: {fileID: 11400000, guid: 2fe28422a6bd46e4698555c7d9887031, type: 2}
   m_OnFocusSelectAll: 0
-  m_ResetOnDeActivation: 1
+  m_ResetOnDeActivation: 0
   m_RestoreOriginalTextOnEscape: 0
   m_isRichTextEditingAllowed: 0
   m_LineLimit: 0
@@ -1643,7 +1643,7 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 0
+  m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}

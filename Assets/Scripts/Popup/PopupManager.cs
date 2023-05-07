@@ -6,8 +6,7 @@ using UnityEngine;
 public enum PopupType
 {
     Settings,
-    DetailedSettings,
-    MainMenu
+    DetailedSettings
 }
 
 public class PopupManager : MonoBehaviour
@@ -36,10 +35,7 @@ public class PopupManager : MonoBehaviour
     {
         foreach (var popup in allPopups)
         {
-            if (popup.Type != defaultPopupToOpen)
-            {
-                ClosePopup(popup.CanvasGroup);
-            }
+            ClosePopup(popup.CanvasGroup);
             popup.OnClose += ClosePopup;
         }
     }
@@ -74,8 +70,9 @@ public class PopupManager : MonoBehaviour
         canvasGroup.gameObject.SetActive(true);
         openTween?.Kill(true);
         openedPopups.Add(canvasGroup);
-        openTween = canvasGroup.transform.DOScale(Vector3.one, openAnimation.Duration)
-            .SetEase(openAnimation.Ease).SetTarget(this);
+        openTween = canvasGroup.transform.DOScale(Vector2.one, openAnimation.Duration)
+            .SetEase(openAnimation.Ease)
+            .SetTarget(this);
     }
 
     public void ClosePopup(PopupType type)
@@ -94,25 +91,17 @@ public class PopupManager : MonoBehaviour
         }
         closeTween?.Kill(true);
         openedPopups.Remove(canvasGroup);
-        closeTween = canvasGroup.transform.DOScale(Vector3.zero, closeAnimation.Duration)
+        closeTween = canvasGroup.transform.DOScale(Vector2.zero, closeAnimation.Duration)
             .SetEase(closeAnimation.Ease)
             .OnKill(() => FinalizePopup(canvasGroup))
-            .OnComplete(() => FinalizePopup(canvasGroup)).SetTarget(this);
+            .OnComplete(() => FinalizePopup(canvasGroup))
+            .SetTarget(this);
     }
 
     private void FinalizePopup(CanvasGroup canvasGroup)
     {
         canvasGroup.blocksRaycasts = true;
         canvasGroup.gameObject.SetActive(false);
-    }
-
-    public void CloseAllPopups()
-    {
-        openedPopups = new();
-        foreach (var popup in allPopups)
-        {
-            ClosePopup(popup.CanvasGroup);
-        }
     }
 
 #if UNITY_EDITOR

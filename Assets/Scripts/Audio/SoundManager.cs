@@ -40,8 +40,6 @@ public class SoundManager : MonoBehaviour
     [SerializeField]
     private AudioSource soundSource;
 
-    private readonly Queue<SoundData> playlist = new();
-
     public static SoundManager Instance { get; private set; }
 
     private void Awake()
@@ -49,30 +47,20 @@ public class SoundManager : MonoBehaviour
         Instance = this;
     }
 
-    private void Update()
+    public void Play(SoundType soundType)
     {
-        if (playlist.Count > 0 && !soundSource.isPlaying)
-        {
-            var sound = playlist.Dequeue();
-            PlaySound(sound);
-        }
-    }
-
-    public void Play(SoundType type)
-    {
-        var sound = soundData.Find(x => x.Type == type);
-        if (sound == null || sound.AudioClip == null)
+        var soundData = this.soundData.Find(x => x.Type == soundType);
+        if (soundData == null || soundData.AudioClip == null)
         {
             return;
         }
-        playlist.Enqueue(sound);
+        PlaySound(soundData);
     }
 
     private void PlaySound(SoundData sound)
     {
         soundSource.volume = sound.Volume;
         soundSource.pitch = sound.Pitch;
-        soundSource.clip = sound.AudioClip;
-        soundSource.Play();
+        soundSource.PlayOneShot(sound.AudioClip);
     }
 }

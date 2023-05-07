@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Popup : MonoBehaviour, ICancelHandler
 {
-    public event Action<CanvasGroup> OnClose = delegate { };
+    public event Action<Popup> OnClose = delegate { };
 
     [SerializeField]
     private PopupType type;
@@ -13,6 +13,7 @@ public class Popup : MonoBehaviour, ICancelHandler
     private CanvasGroup canvasGroup;
     [SerializeField]
     private Button closeButton;
+    [Header("Can be left null if dynamic content")]
     [SerializeField]
     private UINavigationManager navigator;
 
@@ -26,7 +27,7 @@ public class Popup : MonoBehaviour, ICancelHandler
 
     public void CloseItself(UINavigationManager navigator)
     {
-        OnClose(canvasGroup);
+        OnClose(this);
         navigator.GoBack();
     }
 

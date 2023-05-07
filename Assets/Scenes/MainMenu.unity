@@ -1963,6 +1963,7 @@ MonoBehaviour:
   startGame: {fileID: 1160458856}
   settings: {fileID: 1089275294}
   quit: {fileID: 657197348}
+  mainView: {fileID: 1988302273}
 --- !u!1001 &1874455760
 PrefabInstance:
   m_ObjectHideFlags: 0

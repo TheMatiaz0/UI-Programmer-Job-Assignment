@@ -12,15 +12,13 @@ public enum PopupType
 public class PopupManager : MonoBehaviour
 {
     [SerializeField]
-    private PopupType defaultPopupToOpen;
-    [SerializeField]
     private List<Popup> allPopups;
     [SerializeField]
     private TweenData openAnimation;
     [SerializeField]
     private TweenData closeAnimation;
 
-    private List<CanvasGroup> openedPopups = new();
+    private List<Popup> openedPopups = new();
     private Tween openTween;
     private Tween closeTween;
 
@@ -35,7 +33,7 @@ public class PopupManager : MonoBehaviour
     {
         foreach (var popup in allPopups)
         {
-            ClosePopup(popup.CanvasGroup);
+            ClosePopup(popup);
             popup.OnClose += ClosePopup;
         }
     }
@@ -51,26 +49,26 @@ public class PopupManager : MonoBehaviour
     public void OpenPopup(PopupType type, Action<Popup> callback = null)
     {
         var popupToOpen = allPopups.Find(x => x.Type == type);
-        if (openedPopups.Contains(popupToOpen.CanvasGroup))
+        if (openedPopups.Contains(popupToOpen))
         {
             return;
         }
-        OpenPopup(popupToOpen.CanvasGroup);
+        OpenPopup(popupToOpen);
         callback?.Invoke(popupToOpen);
     }
 
-    public void OpenPopup(CanvasGroup canvasGroup)
+    public void OpenPopup(Popup popup)
     {
         closeTween?.Kill();
         if (openedPopups.Count >= 1)
         {
             var latestPopup = openedPopups[^1];
-            latestPopup.blocksRaycasts = false;
+            latestPopup.CanvasGroup.blocksRaycasts = false;
         }
-        canvasGroup.gameObject.SetActive(true);
+        popup.gameObject.SetActive(true);
         openTween?.Kill(true);
-        openedPopups.Add(canvasGroup);
-        openTween = canvasGroup.transform.DOScale(Vector2.one, openAnimation.Duration)
+        openedPopups.Add(popup);
+        openTween = popup.transform.DOScale(Vector2.one, openAnimation.Duration)
             .SetEase(openAnimation.Ease)
             .SetTarget(this);
     }
@@ -78,30 +76,30 @@ public class PopupManager : MonoBehaviour
     public void ClosePopup(PopupType type)
     {
         var popupToClose = allPopups.Find(x => x.Type == type);
-        ClosePopup(popupToClose.CanvasGroup);
+        ClosePopup(popupToClose);
     }
 
-    public void ClosePopup(CanvasGroup canvasGroup)
+    public void ClosePopup(Popup popup)
     {
         openTween?.Kill();
-        int previousIndex = openedPopups.FindIndex(x => x == canvasGroup) - 1;
+        int previousIndex = openedPopups.FindIndex(x => x == popup) - 1;
         if (previousIndex > -1 && openedPopups.Count > previousIndex)
         {
-            openedPopups[previousIndex].blocksRaycasts = true;
+            openedPopups[previousIndex].CanvasGroup.blocksRaycasts = true;
         }
         closeTween?.Kill(true);
-        openedPopups.Remove(canvasGroup);
-        closeTween = canvasGroup.transform.DOScale(Vector2.zero, closeAnimation.Duration)
+        openedPopups.Remove(popup);
+        closeTween = popup.transform.DOScale(Vector2.zero, closeAnimation.Duration)
             .SetEase(closeAnimation.Ease)
-            .OnKill(() => FinalizePopup(canvasGroup))
-            .OnComplete(() => FinalizePopup(canvasGroup))
+            .OnKill(() => FinalizePopup(popup))
+            .OnComplete(() => FinalizePopup(popup))
             .SetTarget(this);
     }
 
-    private void FinalizePopup(CanvasGroup canvasGroup)
+    private void FinalizePopup(Popup popup)
     {
-        canvasGroup.blocksRaycasts = true;
-        canvasGroup.gameObject.SetActive(false);
+        popup.CanvasGroup.blocksRaycasts = true;
+        popup.gameObject.SetActive(false);
     }
 
 #if UNITY_EDITOR

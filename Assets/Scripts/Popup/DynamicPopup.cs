@@ -18,6 +18,7 @@ public enum PopupContentType
 
 public class DynamicPopup : Popup
 {
+    [Header("Dynamic Popup")]
     [SerializeField]
     private TMP_Text title;
     [SerializeField]

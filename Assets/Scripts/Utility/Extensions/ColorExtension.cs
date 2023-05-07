@@ -16,6 +16,6 @@ public static class ColorExtension
 
     public static bool IsColorDark(this Color color)
     {
-        return GetLuma(color) < 0.5f || color.a < 0.1f;
+        return GetLuma(color) < 0.5f || color.a < 0.5f;
     }
 }

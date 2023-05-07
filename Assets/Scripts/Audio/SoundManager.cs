@@ -12,6 +12,7 @@ public enum SoundType
     ToggleSelect,
     ToggleClick,
     SelectDisabled,
+    ClickDisabled,
 }
 
 public class SoundManager : MonoBehaviour

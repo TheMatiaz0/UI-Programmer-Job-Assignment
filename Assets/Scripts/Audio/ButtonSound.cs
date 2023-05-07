@@ -8,6 +8,7 @@ public class ButtonSound : UIBehaviour, IPointerClickHandler, ISelectHandler, IP
 {
     private const float HighlightCooldown = 0.3f;
     private const SoundType NotInteractableSelection = SoundType.SelectDisabled;
+    private const SoundType NotInteractableClick = SoundType.ClickDisabled;
 
     [SerializeField]
     private SoundType pressedSound;
@@ -37,9 +38,9 @@ public class ButtonSound : UIBehaviour, IPointerClickHandler, ISelectHandler, IP
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (SoundManager.Instance != null && selectable.interactable)
+        if (SoundManager.Instance != null)
         {
-            SoundManager.Instance.Play(pressedSound);
+            SoundManager.Instance.Play(selectable.interactable ? pressedSound : NotInteractableClick);
         }
     }
 
@@ -53,9 +54,9 @@ public class ButtonSound : UIBehaviour, IPointerClickHandler, ISelectHandler, IP
 
     public void OnSubmit(BaseEventData eventData)
     {
-        if (SoundManager.Instance != null && selectable.interactable)
+        if (SoundManager.Instance != null)
         {
-            SoundManager.Instance.Play(pressedSound);
+            SoundManager.Instance.Play(selectable.interactable ? pressedSound : NotInteractableClick);
         }
     }
 

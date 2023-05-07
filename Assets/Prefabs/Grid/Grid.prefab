@@ -51,7 +51,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b961a015f20bb9549a12389d1436ba96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cellPrefab: {fileID: 2989022106694624124, guid: fca33f281902e8b4ea0ff7a44171ac49, type: 3}
+  cellPrefab: {fileID: 2042822243427699499, guid: fca33f281902e8b4ea0ff7a44171ac49, type: 3}
   grid: {fileID: 2500211474452067242}
   cellSize: 33.5
   offset: {x: 0.0645, y: 0.0645}

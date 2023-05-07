@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public enum RectCorner
@@ -36,6 +37,12 @@ public class GridPlacement : MonoBehaviour
 
     private void Awake()
     {
+        StartCoroutine(Setup());
+    }
+
+    private IEnumerator Setup()
+    {
+        yield return new WaitForEndOfFrame();
         var worldCorners = new Vector3[4];
         grid.GetWorldCorners(worldCorners);
         vectCorner = (Vector2)worldCorners[(int)corner];

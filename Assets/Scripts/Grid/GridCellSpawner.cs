@@ -26,10 +26,16 @@ public class GridCellSpawner : MonoBehaviour
             {
                 for (int y = 0; y < grid.Rows; y++)
                 {
-                    Destroy(grid.Cells[x, y].gameObject);
+                    if (grid.Cells != null)
+                    {
+                        if (grid.Cells[x, y] != null && grid.Cells[x, y].isActiveAndEnabled)
+                        {
+                            Destroy(grid.Cells[x, y].gameObject);
+                        }
+                        grid.SpawnCell(new(x, y));
+                    }
                 }
             }
-            InitializeCells();
         }
     }
 
@@ -49,6 +55,7 @@ public class GridCellSpawner : MonoBehaviour
         List<Cell> previousCells = new();
         while (true)
         {
+            yield return new WaitUntil(() => grid.Cells != null);
             foreach (var previousCell in previousCells)
             {
                 Destroy(previousCell.gameObject);

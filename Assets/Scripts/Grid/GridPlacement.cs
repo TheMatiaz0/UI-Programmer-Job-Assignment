@@ -24,8 +24,6 @@ public class GridPlacement : MonoBehaviour
     [SerializeField]
     private Vector2 offset = new(0.2f, 0.2f);
     [SerializeField]
-    private RectCorner corner = RectCorner.BottomLeft;
-    [SerializeField]
     private Vector2 padding;
     [field: SerializeField]
     public int Columns { get; private set; } = 11;

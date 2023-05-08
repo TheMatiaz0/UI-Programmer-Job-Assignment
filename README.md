@@ -8,4 +8,4 @@ Known Bugs:
 - Scroll snapping does not include vertical layout group paddings top and bottom
 - Snapping needs offset when detecting elements inside viewport
 - Raycasting UI does not work properly with Lens Distortion effect (URP), this needs to be probably replaced by solution outside of postprocessing stack: https://gamedev.stackexchange.com/questions/140334/how-to-make-curved-gui-in-unity
-- Popup tweening has complex and rare bug that leaves it in the half state (Schrodingen's Popup)
+- Popup tweening has complex and rare bug that leaves it in the half state (Schrodinger's Popup)

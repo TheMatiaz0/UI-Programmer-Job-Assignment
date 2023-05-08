@@ -18,7 +18,7 @@ public class PopupManager : MonoBehaviour
     [SerializeField]
     private TweenData closeAnimation;
 
-    private List<Popup> openedPopups = new();
+    private readonly List<Popup> openedPopups = new();
 
     public static PopupManager Instance { get; private set; }
 
@@ -31,7 +31,7 @@ public class PopupManager : MonoBehaviour
     {
         foreach (var popup in allPopups)
         {
-            ClosePopup(popup);
+            popup.CanvasGroup.transform.localScale = Vector2.zero;
             popup.OnClose += ClosePopup;
         }
     }
@@ -68,7 +68,7 @@ public class PopupManager : MonoBehaviour
         openedPopups.Add(popup);
         popup.OpenTween = popup.transform.DOScale(Vector2.one, openAnimation.Duration)
             .SetEase(openAnimation.Ease)
-            .SetTarget(this);
+            .SetLink(popup.gameObject);
     }
 
     public void ClosePopup(PopupType type)
@@ -81,7 +81,7 @@ public class PopupManager : MonoBehaviour
     {
         popup.OpenTween?.Kill();
         int previousIndex = openedPopups.FindIndex(x => x == popup) - 1;
-        if (previousIndex > -1 && openedPopups.Count > previousIndex)
+        if (previousIndex >= 0 && openedPopups.Count > previousIndex)
         {
             openedPopups[previousIndex].CanvasGroup.blocksRaycasts = true;
         }
@@ -90,7 +90,7 @@ public class PopupManager : MonoBehaviour
         popup.CloseTween = popup.transform.DOScale(Vector2.zero, closeAnimation.Duration * popup.transform.localScale.x)
             .SetEase(closeAnimation.Ease)
             .OnComplete(() => FinalizePopup(popup))
-            .SetTarget(this);
+            .SetLink(popup.gameObject);
     }
 
     private void FinalizePopup(Popup popup)

@@ -1,10 +1,7 @@
 using DG.Tweening;
 using DG.Tweening.Core;
 using DG.Tweening.Plugins.Options;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
-using UnityEngine;
 
 public static class TMPTweenExtension
 {
@@ -17,7 +14,7 @@ public static class TMPTweenExtension
         }
 
         var t = DOTween.To(() => target.text, x => target.text = x, endValue, endValue.Length / duration);
-        t.SetTarget(target);
+        t.SetLink(target.gameObject);
         return t;
     }
 
@@ -30,7 +27,7 @@ public static class TMPTweenExtension
         }
 
         var t = DOTween.To(() => target.text, x => target.text = x, endValue, endValue.Length / duration);
-        t.SetTarget(target);
+        t.SetLink(target.gameObject);
         return t;
     }
 }

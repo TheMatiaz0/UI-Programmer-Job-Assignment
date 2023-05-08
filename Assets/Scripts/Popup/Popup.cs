@@ -28,6 +28,7 @@ public class Popup : MonoBehaviour, ICancelHandler
     public void CloseItself(UINavigationManager navigator)
     {
         OnClose(this);
+        SoundManager.Instance.Play(SoundType.PopupClose);
         navigator.GoBack();
     }
 

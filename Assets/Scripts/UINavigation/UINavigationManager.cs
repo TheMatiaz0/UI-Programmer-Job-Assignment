@@ -21,7 +21,7 @@ public class NavigationElement
     public UINavigationManager LeadingPath => leadingPath;
 }
 
-public class UINavigationManager : MonoBehaviour, ICancelHandler, ISelectHandler, IDeselectHandler 
+public class UINavigationManager : MonoBehaviour, ICancelHandler, ISelectHandler 
 {
     public event Action<UINavigationManager> OnWentBack = delegate { };
 
@@ -190,20 +190,6 @@ public class UINavigationManager : MonoBehaviour, ICancelHandler, ISelectHandler
         if (navigationElement != null)
         {
             lastSelectedObject = navigationElement.Selectable.gameObject;
-        }
-    }
-
-    public void OnDeselect(BaseEventData eventData)
-    {
-        StartCoroutine(SelectWithDelay(eventData));
-    }
-
-    private IEnumerator SelectWithDelay(BaseEventData eventData)
-    {
-        yield return new WaitForEndOfFrame();
-        if (!elements.Exists(x => x.Selectable.gameObject == eventData.selectedObject))
-        {
-            Reselect();
         }
     }
 }

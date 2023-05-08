@@ -6,7 +6,7 @@ public enum SoundType
 {
     None,
     ButtonClick,
-    ButtonClose,
+    PopupClose,
     ButtonSelect,
     ButtonSelectAlt,
     ToggleSelect,

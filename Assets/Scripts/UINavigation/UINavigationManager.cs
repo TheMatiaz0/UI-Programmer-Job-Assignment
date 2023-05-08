@@ -122,6 +122,10 @@ public class UINavigationManager : MonoBehaviour, ICancelHandler, ISelectHandler
 
     public void OnButtonClicked(NavigationElement clickedElement)
     {
+        if (clickedElement.Selectable == currentSelectable)
+        {
+            return;
+        }
         if (clickedElement.IsAbleToPermanentSelect)
         {
             SetLockedState(clickedElement);

@@ -4,6 +4,8 @@ Unity version: 2022.2.18f1
 
 UI design created by company for this job assignment as UI programmer.
 
+Download: https://github.com/TheMatiaz0/UI-Programmer-Job-Assignment/releases/tag/1.0.0
+
 Known Bugs:
 - Scroll snapping does not include vertical layout group paddings top and bottom
 - Snapping needs offset when detecting elements inside viewport

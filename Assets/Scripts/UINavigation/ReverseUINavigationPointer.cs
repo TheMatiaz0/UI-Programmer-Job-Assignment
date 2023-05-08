@@ -22,7 +22,7 @@ public class ReverseUINavigationPointer : MonoBehaviour
         }
     }
 
-    public void OnClicked()
+    private void OnClicked()
     {
         previousNavigation.OnClicked -= OnClicked;
         currentNavigation.ClearLockedState();

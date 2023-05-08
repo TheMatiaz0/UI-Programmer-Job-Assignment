@@ -2372,7 +2372,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 705, y: 416.5702}
+  m_SizeDelta: {x: 705, y: 352.44}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1860675298
 MonoBehaviour:
@@ -2399,7 +2399,9 @@ MonoBehaviour:
     Select - Enter
     OR Button South
 
-    Back - ESC OR Button East'
+    Back - ESC OR Button East
+
+    Alt + F4 - Quit Game (oops)'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 800c8976860a6de4c8c683aab1090e5a, type: 2}
   m_sharedMaterial: {fileID: 257866385274253584, guid: 800c8976860a6de4c8c683aab1090e5a, type: 2}

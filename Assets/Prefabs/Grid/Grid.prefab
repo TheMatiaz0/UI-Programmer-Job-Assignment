@@ -51,12 +51,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b961a015f20bb9549a12389d1436ba96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canvas: {fileID: 0}
   cellPrefab: {fileID: 2042822243427699499, guid: 0a5a1714bb19505409c346b5da555917, type: 3}
   grid: {fileID: 2500211474452067242}
   cellSize: 33.5
-  offset: {x: 0.0645, y: 0.0645}
-  corner: 0
-  padding: {x: 1.5, y: 1.5}
+  offset: {x: 1.06, y: 1.06}
+  padding: {x: 187.1, y: -17.9}
   <Columns>k__BackingField: 11
   <Rows>k__BackingField: 11
 --- !u!114 &3540919746013985876

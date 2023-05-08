@@ -42,14 +42,6 @@ public class GridPlacement : MonoBehaviour
         StartCoroutine(Setup());
     }
 
-    private IEnumerator Setup()
-    {
-        yield return new WaitForEndOfFrame();
-        vectCorner = grid.RectTransformToScreenSpace(canvas.worldCamera).position;
-        center = new Vector2(cellSize, cellSize) * .5f;
-        Cells = new Cell[Columns, Rows];
-    }
-
     public void SetCell(Vector2Int cellPosition)
     {
         if (IsPossibleCell(cellPosition))
@@ -66,28 +58,30 @@ public class GridPlacement : MonoBehaviour
         }
     }
 
+    private IEnumerator Setup()
+    {
+        yield return new WaitForEndOfFrame();
+        center = new Vector2(cellSize, cellSize) * .5f;
+        Cells = new Cell[Columns, Rows];
+    }
+
     public Cell SpawnCell(Vector2Int cellPosition)
     {
-        Cell cell = Instantiate(cellPrefab, GetTruePosition(cellPosition), Quaternion.identity, this.transform);
+        Cell cell = Instantiate(cellPrefab, GetWorldPosition(cellPosition), Quaternion.identity, this.transform);
         Cells[cellPosition.x, cellPosition.y] = cell;
         cell.gameObject.name = $"Cell {cellPosition.x} {cellPosition.y}";
         return cell;
     }
 
-    private Vector2 GetTruePosition(Vector2Int cellPosition)
-    {
-        RectTransformUtility.ScreenPointToWorldPointInRectangle(
-            canvasRectTransform,
-            GetWorldPosition(cellPosition) + center,
-            canvas.worldCamera,
-            out var output);
-
-        return output;
-    }
-
     private Vector2 GetWorldPosition(Vector2Int cellPosition)
     {
-        return new Vector2(cellPosition.x + (offset.x * cellPosition.x), cellPosition.y + (offset.y * cellPosition.y)) * cellSize + vectCorner + padding;
+        Vector2 calculatedOffset = new Vector2(offset.x * (Columns - 1), offset.y * (Rows - 1));
+        Vector2 gridStart = transform.position - new Vector3(calculatedOffset.x, calculatedOffset.y, 0) * cellSize / 2;
+        Vector2 cellOffset = new Vector2(cellPosition.x * offset.x, cellPosition.y * offset.y);
+        Vector2 cellPos = gridStart + cellOffset * cellSize + new Vector2(cellSize, cellSize) / 2 + padding;
+        Vector3 worldPos = transform.TransformPoint(cellPos);
+        Vector3 screenPos = Camera.main.WorldToScreenPoint(worldPos);
+        return Camera.main.ScreenToWorldPoint(screenPos);
     }
 
     private void GetXY(Vector2 worldPosition, out int x, out int y)

@@ -24,6 +24,7 @@ public class NavigationElement
 public class UINavigationManager : MonoBehaviour, ICancelHandler, ISelectHandler 
 {
     public event Action<UINavigationManager> OnWentBack = delegate { };
+    public event Action OnClicked = delegate { };
 
     [SerializeField]
     private Navigation.Mode chosenMode;
@@ -38,7 +39,7 @@ public class UINavigationManager : MonoBehaviour, ICancelHandler, ISelectHandler
     private Dictionary<Selectable, Color> selectableImageColors = new();
     private GameObject lastSelectedObject;
 
-    public UINavigationManager PreviousNavigation { get; private set; }
+    public UINavigationManager PreviousNavigation { get; set; }
     public List<NavigationElement> Elements => elements;
 
     private void OnEnable()
@@ -117,6 +118,7 @@ public class UINavigationManager : MonoBehaviour, ICancelHandler, ISelectHandler
             navigationPath.Setup();
             navigationPath.Reselect();
             this.enabled = false;
+            OnClicked?.Invoke();
         }
     }
 
@@ -129,6 +131,7 @@ public class UINavigationManager : MonoBehaviour, ICancelHandler, ISelectHandler
         if (clickedElement.IsAbleToPermanentSelect)
         {
             SetLockedState(clickedElement);
+            OnClicked?.Invoke();
         }
         else
         {

@@ -2015,6 +2015,7 @@ GameObject:
   - component: {fileID: 1735277112}
   - component: {fileID: 1735277114}
   - component: {fileID: 1735277113}
+  - component: {fileID: 1735277115}
   m_Layer: 5
   m_Name: VersionNumber
   m_TagString: Untagged
@@ -2062,7 +2063,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: v. 0.9.3
+  m_text: 1.0.0 (2022.2.18f1)
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 800c8976860a6de4c8c683aab1090e5a, type: 2}
   m_sharedMaterial: {fileID: 257866385274253584, guid: 800c8976860a6de4c8c683aab1090e5a, type: 2}
@@ -2139,6 +2140,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1735277111}
   m_CullTransparentMesh: 1
+--- !u!114 &1735277115
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1735277111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 669c5fbc6a4440347b1e3b00023f58fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: {fileID: 1735277113}
 --- !u!1 &1792512027 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3894314633280797709, guid: 047157a2851bc044dbf8d9f2b2db489f, type: 3}
@@ -3386,6 +3400,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1027040164324391787, guid: 047157a2851bc044dbf8d9f2b2db489f, type: 3}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 206537141}
     - target: {fileID: 1079815456969013772, guid: 047157a2851bc044dbf8d9f2b2db489f, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 5.1225586

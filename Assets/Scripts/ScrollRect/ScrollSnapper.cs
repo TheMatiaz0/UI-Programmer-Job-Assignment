@@ -36,7 +36,10 @@ public class ScrollSnapper : MonoBehaviour
 
     private void OnSelected(ScrollSnapSelectable selectable)
     {
-        SnapTo(selectable.Rect);
+        if (!RectTransformUtility.RectangleContainsScreenPoint(scrollRect.viewport, selectable.RectTransform.position))
+        {
+            SnapTo(selectable.RectTransform);
+        }
     }
 
     public void SnapTo(RectTransform target)

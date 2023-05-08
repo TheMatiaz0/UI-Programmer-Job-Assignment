@@ -78,7 +78,7 @@ public class UINavigationManager : MonoBehaviour, ICancelHandler, ISelectHandler
             }
         }
 
-        CleanLockedState();
+        ClearLockedState();
     }
 
     public void Reselect()
@@ -100,7 +100,7 @@ public class UINavigationManager : MonoBehaviour, ICancelHandler, ISelectHandler
         {
             OnWentBack(this);
         }
-        PreviousNavigation?.CleanLockedState();
+        PreviousNavigation?.ClearLockedState();
         GoTo(PreviousNavigation, true);
     }
 
@@ -132,11 +132,11 @@ public class UINavigationManager : MonoBehaviour, ICancelHandler, ISelectHandler
         }
         else
         {
-            CleanLockedState();
+            ClearLockedState();
         }
     }
 
-    public void CleanLockedState()
+    public void ClearLockedState()
     {
         SetPreviousSelectable();
         currentSelectable = null;

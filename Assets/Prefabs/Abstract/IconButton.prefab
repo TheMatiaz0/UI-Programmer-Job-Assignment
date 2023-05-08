@@ -369,7 +369,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
-  m_RaycastPadding: {x: -20, y: -20, z: -20, w: -20}
+  m_RaycastPadding: {x: -25, y: -25, z: -25, w: -25}
   m_Maskable: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -443,6 +443,7 @@ MonoBehaviour:
   pressedSound: 2
   highlightedSound: 4
   selectedSound: 4
+  selectable: {fileID: 7582394913200374532}
   highlightCooldown: 1
 --- !u!1 &8016155741617141051
 GameObject:

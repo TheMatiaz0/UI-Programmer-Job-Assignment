@@ -33,14 +33,17 @@ public class InputFieldCodeTyper : UIBehaviour
         inputField.DOType(resultText, animationData.Duration)
             .SetEase(animationData.Ease)
             .SetLoops(-1, LoopType.Incremental)
-            .OnUpdate(() => SetCaretVisible(inputField.text.Length));
+            .OnUpdate(() => SetCaretVisible());
     }
 
-    private void SetCaretVisible(int pos)
+    private void SetCaretVisible()
     {
-        inputField.caretPosition = pos;
-        SetAllowInputImpl(inputField, true);
-        SetCaretVisibleImpl(inputField);
+        if (inputField != null && inputField.isActiveAndEnabled)
+        {
+            inputField.caretPosition = inputField.text.Length;
+            SetAllowInputImpl(inputField, true);
+            SetCaretVisibleImpl(inputField);
+        }
     }
 
     private static SetAllowInputDelegate CreateSetAllowInputDelegate()

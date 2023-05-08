@@ -13,18 +13,18 @@ public class ReverseUINavigationPointer : MonoBehaviour
     public void Setup(Selectable clicked)
     {
         var previousNavElement = previousNavigation.Elements.Find(x => x.LeadingPath == currentNavigation);
-        if (currentNavigation.PreviousNavigation == null && previousNavElement != null)
+        if (previousNavElement != null)
         {
             previousNavigation.OnButtonClicked(previousNavElement);
             var currentNavElement = currentNavigation.Elements.Find(x => x.Selectable == clicked);
             currentNavigation.OnButtonClicked(currentNavElement);
-            previousNavigation.OnClicked += PreviousNavigation_OnClicked;
+            previousNavigation.OnClicked += OnClicked;
         }
     }
 
-    private void PreviousNavigation_OnClicked()
+    public void OnClicked()
     {
-        previousNavigation.OnClicked -= PreviousNavigation_OnClicked;
+        previousNavigation.OnClicked -= OnClicked;
         currentNavigation.ClearLockedState();
         currentNavigation.PreviousNavigation = null;
     }

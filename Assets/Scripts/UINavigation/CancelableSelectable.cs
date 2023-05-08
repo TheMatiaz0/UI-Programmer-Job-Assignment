@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class CancelableSelectable : MonoBehaviour, ICancelHandler, ISelectHandler, IDeselectHandler
+public class CancelableSelectable : MonoBehaviour, ICancelHandler, ISelectHandler, IDeselectHandler, ISubmitHandler
 {
     public void OnCancel(BaseEventData eventData)
     {
@@ -16,5 +16,10 @@ public class CancelableSelectable : MonoBehaviour, ICancelHandler, ISelectHandle
     public void OnDeselect(BaseEventData eventData)
     {
         ExecuteEvents.ExecuteHierarchy(transform.parent.gameObject, eventData, ExecuteEvents.deselectHandler);
+    }
+
+    public void OnSubmit(BaseEventData eventData)
+    {
+        ExecuteEvents.ExecuteHierarchy(transform.parent.gameObject, eventData, ExecuteEvents.submitHandler);
     }
 }

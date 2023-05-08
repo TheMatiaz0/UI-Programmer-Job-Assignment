@@ -1750,9 +1750,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08450246f643c2546b31ab0d60f7fbfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rect: {fileID: 1988302272}
-  tweenData:
-    ease: 6
+  canvasGroup: {fileID: 1871252455}
+  audioSource: {fileID: 1347457280}
+  enterTweenData:
+    ease: 19
+    duration: 0.5
+  exitTweenData:
+    ease: 15
     duration: 2
 --- !u!1 &1633299005
 GameObject:
@@ -2405,6 +2409,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1871252453}
   - component: {fileID: 1871252454}
+  - component: {fileID: 1871252455}
   m_Layer: 5
   m_Name: Display
   m_TagString: Untagged
@@ -2449,6 +2454,18 @@ MonoBehaviour:
   settings: {fileID: 1089275294}
   quit: {fileID: 657197348}
   mainView: {fileID: 1988302273}
+--- !u!225 &1871252455
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1871252452}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1001 &1874455760
 PrefabInstance:
   m_ObjectHideFlags: 0

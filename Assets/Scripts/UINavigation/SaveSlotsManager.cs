@@ -30,6 +30,7 @@ public class SaveSlotsManager : MonoBehaviour, ICancelHandler
         foreach (var slot in slots)
         {
             slot.SlotButton.onClick.AddListener(() => OnSlotClicked(slot));
+            slot.LoadButton.onClick.AddListener(() => OnLoadClicked(slot));
         }
     }
 
@@ -46,6 +47,11 @@ public class SaveSlotsManager : MonoBehaviour, ICancelHandler
         selectedSlot = clickedSlot;
         slotObject.SetActive(true);
         reverseNavigator.Setup(selectedSlot.SlotButton);
+    }
+
+    private void OnLoadClicked(Slot clickedSlot)
+    {
+        TransitionManager.Instance.ChangeSceneToMenu();
     }
 
     public void OnCancel(BaseEventData eventData)

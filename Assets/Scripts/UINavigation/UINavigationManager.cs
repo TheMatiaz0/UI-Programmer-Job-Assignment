@@ -118,7 +118,6 @@ public class UINavigationManager : MonoBehaviour, ICancelHandler, ISelectHandler
             navigationPath.Setup();
             navigationPath.Reselect();
             this.enabled = false;
-            OnClicked?.Invoke();
         }
     }
 
@@ -131,7 +130,7 @@ public class UINavigationManager : MonoBehaviour, ICancelHandler, ISelectHandler
         if (clickedElement.IsAbleToPermanentSelect)
         {
             SetLockedState(clickedElement);
-            OnClicked?.Invoke();
+            OnClicked();
         }
         else
         {

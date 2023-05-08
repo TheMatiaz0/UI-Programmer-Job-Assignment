@@ -10,9 +10,6 @@ public class RadialAnimation : MonoBehaviour
     [SerializeField]
     private RectTransform line;
     [SerializeField]
-    private TweenData tweenData;
-
-    [SerializeField]
     private float radialTime;
     [SerializeField]
     private float lineTime;
@@ -20,6 +17,6 @@ public class RadialAnimation : MonoBehaviour
     private void Update()
     {
         radialRt.transform.rotation = Quaternion.Euler(0, Time.time * radialTime * 360, 0);
-        line.transform.localRotation = Quaternion.Euler(0, 0, Time.time * lineTime * 360);;
+        line.transform.localRotation = Quaternion.Euler(0, 0, Time.time * lineTime * 360);
     }
 }

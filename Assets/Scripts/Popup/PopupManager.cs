@@ -19,8 +19,6 @@ public class PopupManager : MonoBehaviour
     private TweenData closeAnimation;
 
     private List<Popup> openedPopups = new();
-    private Tween openTween;
-    private Tween closeTween;
 
     public static PopupManager Instance { get; private set; }
 
@@ -59,16 +57,16 @@ public class PopupManager : MonoBehaviour
 
     public void OpenPopup(Popup popup)
     {
-        closeTween?.Kill();
+        popup.CloseTween?.Kill();
         if (openedPopups.Count >= 1)
         {
             var latestPopup = openedPopups[^1];
             latestPopup.CanvasGroup.blocksRaycasts = false;
         }
         popup.gameObject.SetActive(true);
-        openTween?.Kill(true);
+        popup.OpenTween?.Kill();
         openedPopups.Add(popup);
-        openTween = popup.transform.DOScale(Vector2.one, openAnimation.Duration)
+        popup.OpenTween = popup.transform.DOScale(Vector2.one, openAnimation.Duration)
             .SetEase(openAnimation.Ease)
             .SetTarget(this);
     }
@@ -81,24 +79,22 @@ public class PopupManager : MonoBehaviour
 
     public void ClosePopup(Popup popup)
     {
-        openTween?.Kill();
+        popup.OpenTween?.Kill();
         int previousIndex = openedPopups.FindIndex(x => x == popup) - 1;
         if (previousIndex > -1 && openedPopups.Count > previousIndex)
         {
             openedPopups[previousIndex].CanvasGroup.blocksRaycasts = true;
         }
-        closeTween?.Kill(true);
+        popup.CloseTween?.Kill();
         openedPopups.Remove(popup);
-        closeTween = popup.transform.DOScale(Vector2.zero, closeAnimation.Duration)
+        popup.CloseTween = popup.transform.DOScale(Vector2.zero, closeAnimation.Duration * popup.transform.localScale.x)
             .SetEase(closeAnimation.Ease)
-            .OnKill(() => FinalizePopup(popup))
             .OnComplete(() => FinalizePopup(popup))
             .SetTarget(this);
     }
 
     private void FinalizePopup(Popup popup)
     {
-        popup.CanvasGroup.blocksRaycasts = true;
         popup.gameObject.SetActive(false);
     }
 

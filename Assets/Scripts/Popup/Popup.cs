@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -19,6 +20,8 @@ public class Popup : MonoBehaviour, ICancelHandler
 
     public PopupType Type => type;
     public CanvasGroup CanvasGroup => canvasGroup;
+    public Tween OpenTween { get; set; }
+    public Tween CloseTween { get; set; }
 
     private void Awake()
     {

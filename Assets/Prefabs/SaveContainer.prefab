@@ -111,6 +111,7 @@ MonoBehaviour:
     loadButton: {fileID: 6974610730030376607}
   - slotButton: {fileID: 8099164882648861387}
     loadButton: {fileID: 8967274507174965248}
+  reverseNavigator: {fileID: 0}
 --- !u!1001 &5308975784377164291
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -162,6 +163,18 @@ PrefabInstance:
     - target: {fileID: 4478264570240676708, guid: 33e12bca1b8fd004c97b0ef2f13f6538, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5111187788743217035, guid: 33e12bca1b8fd004c97b0ef2f13f6538, type: 3}
+      propertyPath: pressedSound
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5111187788743217035, guid: 33e12bca1b8fd004c97b0ef2f13f6538, type: 3}
+      propertyPath: selectedSound
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5111187788743217035, guid: 33e12bca1b8fd004c97b0ef2f13f6538, type: 3}
+      propertyPath: highlightedSound
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7641926915853212635, guid: 33e12bca1b8fd004c97b0ef2f13f6538, type: 3}
       propertyPath: m_Name
@@ -385,6 +398,18 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5111187788743217035, guid: 33e12bca1b8fd004c97b0ef2f13f6538, type: 3}
+      propertyPath: pressedSound
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5111187788743217035, guid: 33e12bca1b8fd004c97b0ef2f13f6538, type: 3}
+      propertyPath: selectedSound
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5111187788743217035, guid: 33e12bca1b8fd004c97b0ef2f13f6538, type: 3}
+      propertyPath: highlightedSound
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 7641926915853212635, guid: 33e12bca1b8fd004c97b0ef2f13f6538, type: 3}
       propertyPath: m_Name
       value: SaveButton_Slot_2
@@ -598,6 +623,18 @@ PrefabInstance:
     - target: {fileID: 4478264570240676708, guid: 33e12bca1b8fd004c97b0ef2f13f6538, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5111187788743217035, guid: 33e12bca1b8fd004c97b0ef2f13f6538, type: 3}
+      propertyPath: pressedSound
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5111187788743217035, guid: 33e12bca1b8fd004c97b0ef2f13f6538, type: 3}
+      propertyPath: selectedSound
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5111187788743217035, guid: 33e12bca1b8fd004c97b0ef2f13f6538, type: 3}
+      propertyPath: highlightedSound
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7641926915853212635, guid: 33e12bca1b8fd004c97b0ef2f13f6538, type: 3}
       propertyPath: m_Name

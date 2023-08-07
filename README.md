@@ -2,7 +2,20 @@
 
 Unity version: 2022.2.18f1
 
-UI design created by company for this job assignment as UI programmer.
+UI design has been provided by the company for this job assignment as UI programmer.
+
+![mouse_window](https://github.com/TheMatiaz0/UI-Programmer-Job-Assignment/blob/main/public/mouse_window.gif)
+![windows](https://github.com/TheMatiaz0/UI-Programmer-Job-Assignment/blob/main/public/windows.png)
+
+Featuring:
+- Buttons with sfx and color tint.
+- Ability to use both keyboard and/or gamepad.
+- Smooth scroll view.
+- Volume slider.
+- Checkbox field.
+- Popup windows.
+- Own navigation system (bypassing Unity navigation).
+- Post-processing effects.
 
 Download: https://github.com/TheMatiaz0/UI-Programmer-Job-Assignment/releases/tag/1.0.0
 
